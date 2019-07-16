@@ -10,6 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="mongocsharpdriver" Version="2.8.1" />
+    <PackageReference Include="MongoDB.Driver" Version="2.8.1" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Vistas\" />
+    <Folder Include="VistaModelo\" />
   </ItemGroup>
 </Project>

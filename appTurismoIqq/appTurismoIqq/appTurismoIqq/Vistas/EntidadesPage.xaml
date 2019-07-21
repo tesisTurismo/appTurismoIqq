@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appTurismoIqq.Vistas.EntidadesPage"
+            BindingContext="{Binding Main,Source={StaticResource localizador}}"
+    >
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding Entidades}" Padding="5">
+            
+            <Label Text="{Binding prueba}"></Label>
+            <ListView ItemsSource="{Binding Listaentidades}"
+                      HasUnevenRows="True"
+                      RefreshCommand="{Binding RefreshCommand}"
+                     
+                      IsPullToRefreshEnabled="True" 
+                      SeparatorVisibility="Default" BackgroundColor="Aqua">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            
+                                <Grid>
+                                    <!--<Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SucursalesCommand}"/>
+                                    </Grid.GestureRecognizers>-->
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+
+                                    </Grid.ColumnDefinitions>
+                                    <!--<Image 
+                                    Grid.Column="0"
+
+                                    Source="{Binding fotoApp}" 
+                                    WidthRequest="100"
+                                    HeightRequest="100">
+
+                                    </Image>-->
+                                    
+                                       
+
+
+                                   
+                                    <Label  Grid.Column="0"
+                                       FontAttributes="Bold" 
+                                        TextColor="Black"
+                                       Text="{Binding nombre}"
+                                       FontSize="18">
+
+
+                                    </Label>
+                                <Label  Grid.Column="1"
+                                       FontAttributes="Bold" 
+                                        TextColor="Black"
+                                       Text="{Binding pagWeb}"
+                                       FontSize="18">
+
+
+                                </Label>
+
+                                <Label Grid.Column="2"
+                                       FontAttributes="Bold"  
+                                       TextColor="Black"
+                                       Text="{Binding descripcion}"
+                                       FontSize="Medium" >
+                                    </Label>
+                                    
+                                    
+                                </Grid>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

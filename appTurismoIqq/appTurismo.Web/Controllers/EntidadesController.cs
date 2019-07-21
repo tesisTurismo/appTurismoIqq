@@ -1,45 +1,43 @@
-﻿using appTurismo.Web.App_Start;
-using appTurismo.Web.Helpers;
+﻿using appTurismo.Web.Helpers;
 using appTurismo.Web.Models;
 using appTurismoIqq.Modelo;
 using MongoDB.Bson;
 using MongoDB.Driver;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Authentication;
 using System.Web;
 using System.Web.Mvc;
 
 namespace appTurismo.Web.Controllers
 {
-    public class EntidadController : Controller
+    public class EntidadesController : Controller
     {
-        private readonly MongoContext db = new MongoContext();
         string conec = "mongodb+srv://user:tesis123456@tesis1-7onzc.azure.mongodb.net/test";
         string bdname = "bdTurismo";
-        // GET: Entidad
+        // GET: Entidades
         public ActionResult Index()
         {
-            
-            var entidades =db.Entidades.Find(new BsonDocument()).ToList();
-            return View(entidades);
+            var cliente = new MongoClient(conec);
+
+            var database = cliente.GetDatabase(bdname);
+            var listaentidades = database.GetCollection<Entidad>("entidad").Find(new BsonDocument()).ToList();
+            return View(listaentidades);
         }
 
-        // GET: Entidad/Details/5
+        // GET: Entidades/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Entidad/Create
+        // GET: Entidades/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Entidad/Create
+        // POST: Entidades/Create
         [HttpPost]
         public ActionResult Create(EntidadVista entidadvista)
         {
@@ -56,21 +54,11 @@ namespace appTurismo.Web.Controllers
                 //almaceno los datos en la variable local
                 var entidad = this.ToEntidad(entidadvista, pic);
 
+                var cliente = new MongoClient(conec);
 
-                string connectionString =
-    @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
-                MongoClientSettings settings = MongoClientSettings.FromUrl(
-                  new MongoUrl(connectionString)
-                );
-                settings.SslSettings =
-                  new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
-                var mongoClient = new MongoClient(settings);
-                // var cliente = new MongoClient(conec);
-                //bd = cliente.GetDatabase(bdname);
-                var database = mongoClient.GetDatabase(bdname);
-
-                var entidades = database.GetCollection<Entidad>("Entidad");
-                entidades.InsertOneAsync(entidad);
+                var database = cliente.GetDatabase(bdname);
+                var listaentidades = database.GetCollection<Entidad>("entidad");
+                listaentidades.InsertOneAsync(entidad);
                 return RedirectToAction("Index");
             }
             catch
@@ -96,13 +84,13 @@ namespace appTurismo.Web.Controllers
                 categoria = vistaEntidad.categoria,
             };
         }
-        // GET: Entidad/Edit/5
+        // GET: Entidades/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Entidad/Edit/5
+        // POST: Entidades/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -118,13 +106,13 @@ namespace appTurismo.Web.Controllers
             }
         }
 
-        // GET: Entidad/Delete/5
+        // GET: Entidades/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Entidad/Delete/5
+        // POST: Entidades/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

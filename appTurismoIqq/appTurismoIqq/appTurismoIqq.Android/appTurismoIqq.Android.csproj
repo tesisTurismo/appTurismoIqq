@@ -49,9 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="mongocsharpdriver">
-      <Version>2.8.1</Version>
-    </PackageReference>
     <PackageReference Include="MongoDB.Driver">
       <Version>2.8.1</Version>
     </PackageReference>

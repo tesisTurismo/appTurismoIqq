@@ -19,26 +19,14 @@ namespace appTurismo.Web.App_Start
 
         public MongoContext()
         {
-           /* 
-            string connectionString =
-              @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
-            MongoClientSettings settings = MongoClientSettings.FromUrl(
-              new MongoUrl(connectionString)
-            );
-            settings.SslSettings =
-              new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
-            var mongoClient = new MongoClient(settings);
-
-          */
-            // bd = mongoClient.GetDatabase("dbTurismo");
             
 
-            
-          /*  var cliente = new MongoClient(conec);
-            //bd = cliente.GetDatabase(bdname);
-            var database = cliente.GetDatabase(bdname);
-            var usuarios = database.GetCollection<Usuario>("usuario");
-           */ 
+
+            /*  var cliente = new MongoClient(conec);
+              //bd = cliente.GetDatabase(bdname);
+              var database = cliente.GetDatabase(bdname);
+              var usuarios = database.GetCollection<Usuario>("usuario");
+             */
 
         }
 
@@ -49,14 +37,23 @@ namespace appTurismo.Web.App_Start
         {
 
             get {
-                var cliente = new MongoClient(conec);
+                string connectionString =
+   @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                MongoClientSettings settings = MongoClientSettings.FromUrl(
+                  new MongoUrl(connectionString)
+                );
+                settings.SslSettings =
+                  new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+                var mongoClient = new MongoClient(settings);
+                // var cliente = new MongoClient(conec);
                 //bd = cliente.GetDatabase(bdname);
-                var database = cliente.GetDatabase(bdname);
+                var database = mongoClient.GetDatabase(bdname);
                 
-                var entidades = database.GetCollection<Entidad>("entidad");
+                var entidades = database.GetCollection<Entidad>("Entidad");
                 return entidades;
                 }
         }
+
 
         public IMongoCollection<Usuario> Usuarios
         {

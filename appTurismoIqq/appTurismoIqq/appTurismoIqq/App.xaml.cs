@@ -1,4 +1,5 @@
-﻿using System;
+﻿using appTurismoIqq.Vistas;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace appTurismoIqq
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage( new EntidadesPage());
         }
 
         protected override void OnStart()

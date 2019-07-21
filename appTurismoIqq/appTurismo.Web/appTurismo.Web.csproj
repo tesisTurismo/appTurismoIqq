@@ -61,9 +61,6 @@
     <Reference Include="MongoDB.Driver.Core, Version=2.8.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Driver.Core.2.8.1\lib\net452\MongoDB.Driver.Core.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver.Legacy, Version=2.8.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\mongocsharpdriver.2.8.1\lib\net452\MongoDB.Driver.Legacy.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -190,6 +187,7 @@
     <Compile Include="App_Start\MongoContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\EntidadController.cs" />
+    <Compile Include="Controllers\EntidadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -205,12 +203,15 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ImagenesEntidades\28468569_680575295399982_4253780509546512384_n.jpg" />
+    <Content Include="Content\ImagenesEntidades\28575616_680575228733322_6896966536704032768_n.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\appTurismoWeb2019 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -240,10 +241,11 @@
     <Content Include="Views\Entidad\Create.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
+    <Content Include="Views\Entidades\Index.cshtml" />
+    <Content Include="Views\Entidades\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\ImagenesEntidades\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

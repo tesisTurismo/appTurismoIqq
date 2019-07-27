@@ -30,5 +30,20 @@ namespace appTurismoIqq.Modelo
         public double longitud { get; set; }
         [BsonElement("categoria")]
         public string categoria { get; set; }
+
+
+        public string fotoApp
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.foto))
+                {
+                    return "noLocal";
+                }
+
+                return $"https://appturismoweb2019.azurewebsites.net/{this.foto.Substring(1)}";
+
+            }
+        }
     }
 }

@@ -7,10 +7,23 @@ namespace appTurismoIqq.VistaModelo
     public class VistaPrincipal
     {
         public EntidadesVModelo Entidades { get; set; }
+        public DetalleEntidadVModelo detalleEntidad { get; set; }
+        public CategoriasVModel Categorias { get; set; }
         public VistaPrincipal()
         {
-            this.Entidades = new EntidadesVModelo();
+            //this.Entidades = new EntidadesVModelo();
+            instancia = this;
         }
-        
+
+        private static VistaPrincipal instancia;
+
+        public static VistaPrincipal GetInstancia()
+        {
+            if (instancia == null)
+            {
+                return new VistaPrincipal();
+            }
+            return instancia;
+        }
     }
 }

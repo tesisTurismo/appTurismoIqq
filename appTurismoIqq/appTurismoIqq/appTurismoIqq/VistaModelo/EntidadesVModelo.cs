@@ -10,49 +10,72 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Linq;
+using appTurismoIqq.Vistas;
 
 namespace appTurismoIqq.VistaModelo
 {
     public class EntidadesVModelo : BaseVModelo
     {
-        ApiServicio Entidades;
-        bool rpta=false;
-        public bool Rpta{
-            get { return this.rpta; }
-            set { this.SetValue(ref this.rpta, value); }
-        }
-        private List<Entidad> listaentidades;
-        public List<Entidad> Listaentidades
+        ApiServicio apiEntidades;
+        private bool isRefreshing;
+
+        public List<Entidad> MyEntidades { get; set; }
+
+        private List<EntidadesItemVModel> listaentidades;
+        public List<EntidadesItemVModel> Listaentidades
         {
             get { return this.listaentidades; }
             set { this.SetValue(ref this.listaentidades,value); }
 
         }
-        /*public ICommand RefreshCommand
-        {
-            get;
-        }*/
+        public Categoria Categoria { get; set; }
 
-        public ICommand RefreshCommand
+        public bool IsRefreshing
         {
-            get
-            {
-                return new RelayCommand(LoadEntidades);
-            }
+            get { return this.isRefreshing; }
+            set { this.SetValue(ref this.isRefreshing, value); }
+
         }
-        public string prueba { get; set; }
-       
 
-        public EntidadesVModelo()
+
+
+        private static EntidadesVModelo instancia;
+        public EntidadesVModelo(Categoria categoria)
         {
-            Entidades = new ApiServicio();
-            rpta = false;
-            prueba = "holaaa";
+            instancia = this;
+
+            this.Categoria = categoria;
+            this.apiEntidades = new ApiServicio();
 
             LoadEntidades();
+        }
 
-            //RefreshCommand = new Command(async () => await ExecuteRefreshCommand());
+        public void RefreshList()
+        {
+            
+                var mylistaNVM = this.MyEntidades.Select(p => new EntidadesItemVModel
+                {
+                    id = p.id,
+                    foto = p.foto,
+                    nombre = p.nombre,
+                    pagWeb = p.pagWeb,
+                    descripcion = p.descripcion,
+                    descripcionEng = p.descripcionEng,
+                    telefono = p.telefono,
+                    direccion = p.direccion,
+                    latitud = p.latitud,
+                    longitud = p.longitud,
+                    categoria = p.categoria,
 
+
+
+
+                });
+                this.Listaentidades = new List<EntidadesItemVModel>(
+                    mylistaNVM.OrderBy(p => p.nombre));
+            
+            
         }
         /*
        async Task ExecuteRefreshCommand()
@@ -73,18 +96,32 @@ namespace appTurismoIqq.VistaModelo
             }
         }
        */
+
+        //métodos
         private async void LoadEntidades()
         {
             try
             {
-                var mongoService = new ApiServicio();
-                Listaentidades = await mongoService.listaEntidades();
+                this.IsRefreshing = true;
+                // var mongoService = new ApiServicio();
+                MyEntidades =  (List<Entidad>) await apiEntidades.CategoriaSeleccionada(Categoria.nombre);
+                RefreshList();
+                this.IsRefreshing = false;
             }
             catch (Exception e)
             {
                 Console.WriteLine("NO SE PUDO TOMAR LOS DATOSSSSSSS : " + e.Message);
             }
             
+        }
+
+        //comandos por ejecular al hacer click..
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadEntidades);
+            }
         }
         /*
         public async void mostrarentidades()

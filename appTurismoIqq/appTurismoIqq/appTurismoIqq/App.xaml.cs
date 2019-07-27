@@ -1,4 +1,5 @@
-﻿using appTurismoIqq.Vistas;
+﻿using appTurismoIqq.VistaModelo;
+using appTurismoIqq.Vistas;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,7 +13,9 @@ namespace appTurismoIqq
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage( new EntidadesPage());
+            var vPrincipal = VistaPrincipal.GetInstancia();
+            vPrincipal.Categorias = new CategoriasVModel();
+            this.MainPage = new NavigationPage(new CategoriasPage());
         }
 
         protected override void OnStart()

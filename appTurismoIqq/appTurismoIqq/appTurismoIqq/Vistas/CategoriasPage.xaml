@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="appTurismoIqq.Vistas.EntidadesPage"
-            BindingContext="{Binding Main,Source={StaticResource localizador}}"
+             x:Class="appTurismoIqq.Vistas.CategoriasPage" BindingContext="{Binding Main,Source={StaticResource localizador}}"
     Title="Entidades">
     <ContentPage.Content>
-        <StackLayout BindingContext="{Binding Entidades}" Padding="5">
-            
-           
-            <ListView ItemsSource="{Binding Listaentidades}"
+        <StackLayout BindingContext="{Binding Categorias}" Padding="5">
+
+            <ListView ItemsSource="{Binding ListaCategorias}"
                       HasUnevenRows="True"
                       IsRefreshing="{Binding IsRefreshing}" 
                       RefreshCommand="{Binding RefreshCommand}" 
@@ -19,29 +17,22 @@
                             <Frame  HasShadow="true" Margin="7">
                                 <Grid>
                                     <Grid.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding DetalleEntidadCommand}"/>
+                                        <TapGestureRecognizer Command="{Binding CategoriaCommand}"/>
                                     </Grid.GestureRecognizers>
 
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        
 
                                     </Grid.ColumnDefinitions>
-                                    <Image 
-                                    Grid.Column="0"
-
-                                    Source="{Binding fotoApp}" 
-                                    WidthRequest="100"
-                                    HeightRequest="100">
-
-                                    </Image>
+                                    
 
 
 
 
                                     <StackLayout Grid.Column="1" VerticalOptions="Center">
                                         <Label  
+                                      
                                        FontAttributes="Bold" 
                                         TextColor="Black"
                                        Text="{Binding nombre}"
@@ -50,14 +41,10 @@
 
                                         </Label>
                                     </StackLayout>
+                                  
 
 
 
-                                    <Image Grid.Column="2" Source="siguiente"
-                                       VerticalOptions="Center" WidthRequest="60"
-                                    HeightRequest="60">
-
-                                    </Image>
 
 
                                 </Grid>

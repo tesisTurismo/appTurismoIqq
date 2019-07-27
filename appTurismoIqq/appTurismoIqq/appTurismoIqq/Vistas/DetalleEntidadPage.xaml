@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appTurismoIqq.Vistas.DetalleEntidadPage"
+             BindingContext="{Binding Main,Source={StaticResource localizador}}">
+    <ContentPage.Content>
+        <StackLayout BindingContext="{Binding detalleEntidad}" Padding="5">
+            <Label FontAttributes="Bold" Text="{Binding NombreEntidad}" FontSize="Large" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Label>
+            <Image Source="{Binding ImageSource}" WidthRequest="100"></Image>
+            <Label Text="{Binding DescripcionEntidad}" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ></Label>
+            <Label Text="Página Web" FontSize="Medium" VerticalOptions="FillAndExpand" FontAttributes="Bold"></Label>
+            <Label Text="{Binding PagWebEntidad}" FontSize="Medium" VerticalOptions="FillAndExpand" ></Label>
+
+
+            <Label Text="Ubicaciones" FontAttributes="Bold" FontSize="Medium" ></Label>
+
+            <ListView
+                
+                HasUnevenRows="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                IsPullToRefreshEnabled="True"
+                ItemsSource="{Binding EntidadSeleccionada}"
+                RefreshCommand="{Binding RefreshCommand}"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame  Margin="5">
+                                <Grid>
+                                    
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                       
+
+
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Grid.Column="0" VerticalOptions="Center">
+                                        <Label  
+                                       FontAttributes="Bold" 
+                                        TextColor="Black"
+                                       Text="{Binding direccion}"
+                                       FontSize="18">
+
+
+                                        </Label>
+
+                                        <Button Grid.Column="2"
+                                    
+                                        Text="Ver Mapa" BackgroundColor="LightBlue"  FontSize="Small" WidthRequest="100" HeightRequest="40" VerticalOptions="Center"></Button>
+                                    </StackLayout>
+                                  
+                                   
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+
+            </ListView>
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

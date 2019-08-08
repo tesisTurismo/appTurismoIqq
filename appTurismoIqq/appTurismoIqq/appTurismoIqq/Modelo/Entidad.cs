@@ -24,11 +24,27 @@ namespace appTurismoIqq.Modelo
         public string telefono { get; set; }
         [BsonElement("direccion")]
         public string direccion { get; set; }
+        
         [BsonElement("latitud")]
         public double latitud { get; set; }
         [BsonElement("longitud")]
         public double longitud { get; set; }
         [BsonElement("categoria")]
         public string categoria { get; set; }
+
+
+        public string fotoApp
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.foto))
+                {
+                    return null;
+                }
+
+                return $"https://appturismoweb2019.azurewebsites.net/{this.foto.Substring(1)}";
+
+            }
+        }
     }
 }

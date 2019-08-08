@@ -1,6 +1,7 @@
 ﻿using appTurismoIqq.Modelo;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using System;
 using System.Collections.Generic;
 using System.Security.Authentication;
@@ -21,32 +22,13 @@ namespace appTurismoIqq.Servicios
         public string error { get; set; }
         public string coleccionSeleccionada { get; set; }
 
-        /*
-        private IMongoCollection<T> lista() => database.GetCollection<T>(typeof(T).Name);
-        public IMongoCollection<T> mostrarLista<T>(string entidad)
-        {
-            try
-            {
-                var entidades = database.GetCollection<T>(entidad);
-                return entidades;
-            }
-            catch
-            {
-                return null;
-            }
- 
-
-        }
-        */
-        List<Entidad> lista { get; set; }
-
-         IMongoCollection<Entidad> coleccion;
-         IMongoCollection<Entidad> Coleccion
+         IMongoCollection<Entidad> coleccionEntidades;
+         IMongoCollection<Entidad> ColeccionEntidades
         
         {
             get
             {
-                if (coleccion==null)
+                if (coleccionEntidades == null)
                 {
                     string connectionString =
                     @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
@@ -59,19 +41,78 @@ namespace appTurismoIqq.Servicios
                     //var client = new MongoClient(conec);
                     var db = mongoClient.GetDatabase(bdname);
                     var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
-                    coleccion = db.GetCollection<Entidad>("Entidad", collectionSettings);
+                    coleccionEntidades = db.GetCollection<Entidad>("Entidad", collectionSettings);
                 }
                 
-                return coleccion;
+                return coleccionEntidades;
             }
             
         }
 
-        public async Task<List<Entidad>> listaEntidades()
+
+        IMongoCollection<Categoria> coleccionCategoria;
+        IMongoCollection<Categoria> ColeccionCategoria
+
+        {
+            get
+            {
+                if (coleccionCategoria == null)
+                {
+                    string connectionString = @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                    MongoClientSettings settings = MongoClientSettings.FromUrl(
+                      new MongoUrl(connectionString)
+                    );
+                    settings.SslSettings =
+                      new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+                    var mongoClient = new MongoClient(settings);
+                    //var client = new MongoClient(conec);
+                    var db = mongoClient.GetDatabase(bdname);
+                    var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
+                    coleccionCategoria = db.GetCollection<Categoria>("Categoria", collectionSettings);
+
+                  
+
+
+
+                }
+
+                return coleccionCategoria;
+            }
+
+        }
+
+        IMongoCollection<Direccion> coleccionDireccion;
+        IMongoCollection<Direccion> ColeccionDireccion
+
+        {
+            get
+            {
+                if (coleccionDireccion == null)
+                {
+                    string connectionString = @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                    MongoClientSettings settings = MongoClientSettings.FromUrl(
+                      new MongoUrl(connectionString)
+                    );
+                    settings.SslSettings =
+                      new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+                    var mongoClient = new MongoClient(settings);
+                    //var client = new MongoClient(conec);
+                    var db = mongoClient.GetDatabase(bdname);
+                    var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
+
+                    coleccionDireccion = db.GetCollection<Direccion>("Direccion", collectionSettings);
+                }
+
+                return coleccionDireccion;
+            }
+
+        }
+
+        public async Task<IEnumerable<Entidad>> listaEntidades()
         {
             try
             {
-                var lista = await Coleccion
+                var lista = await ColeccionEntidades
                 .Find(new BsonDocument())
                 .ToListAsync();
                 Console.WriteLine(lista);
@@ -84,30 +125,74 @@ namespace appTurismoIqq.Servicios
             }
             return null;
         }
-        /*
-        public IEnumerable<T> listar
+
+        public async Task<IEnumerable<Categoria>> listaCategoria()
         {
-            get
+            try
             {
-                try
-                {
-                    error = "";
-                    return lista().Find(new BsonDocument()).ToList();
-                }
-                catch(Exception ex)
-                {
-                    error = ex.Message;
-                    return null;
-                }
+                var lista = await ColeccionCategoria
+                .Find(new BsonDocument())
+                .ToListAsync();
+                Console.WriteLine(lista);
+
+                return lista;
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("NO SE PUDO CAPTURAR LOS DATOS : " + e.Message);
+            }
+            return null;
         }
 
-    */
 
 
+        public async Task<IEnumerable<Entidad>> listaEntidadesSeleccionada( string id)
+        {
+            try
+            {
+                var entidadId = new ObjectId(id);
+                var lista = ColeccionEntidades.AsQueryable<Entidad>().Where(e => e.id == id).ToList();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("NO SE PUDO CAPTURAR LOS DATOS : " + e.Message);
+            }
+            return null;
 
+        }
 
+        public async Task<IEnumerable<Entidad>> CategoriaSeleccionada(string categoria)
+        {
+            try
+            {
+                
+                var lista = ColeccionEntidades.AsQueryable<Entidad>().Where(e => e.categoria == categoria).ToList();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("NO SE PUDO CAPTURAR LOS DATOS : " + e.Message);
+            }
+            return null;
 
+        }
+
+        public async Task<IEnumerable<Direccion>> ListaDirecciones(string nombreentidad)
+        {
+            try
+            {
+
+                var lista = ColeccionDireccion.AsQueryable<Direccion>().Where(e => e.entidad == nombreentidad).ToList();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("NO SE PUDO CAPTURAR LOS DATOS : " + e.Message);
+            }
+            return null;
+
+        }
 
 
 

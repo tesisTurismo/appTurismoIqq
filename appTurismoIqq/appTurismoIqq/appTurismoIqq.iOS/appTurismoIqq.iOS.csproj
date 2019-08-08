@@ -160,4 +160,7 @@
       <Name>appTurismoIqq</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\siguiente.png" />
+  </ItemGroup>
 </Project>

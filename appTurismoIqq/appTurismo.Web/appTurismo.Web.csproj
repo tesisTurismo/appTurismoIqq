@@ -204,7 +204,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ImagenesEntidades\28468569_680575295399982_4253780509546512384_n.jpg" />
-    <Content Include="Content\ImagenesEntidades\28575616_680575228733322_6896966536704032768_n.jpg" />
+    <Content Include="Content\ImagenesEntidades\bulldog.jpg" />
+    <Content Include="Content\ImagenesEntidades\chifananking.jpg" />
+    <Content Include="Content\ImagenesEntidades\hotelhilton.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

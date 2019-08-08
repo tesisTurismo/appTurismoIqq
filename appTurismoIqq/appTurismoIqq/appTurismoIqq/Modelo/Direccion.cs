@@ -1,0 +1,22 @@
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace appTurismoIqq.Modelo
+{
+    public class Direccion
+    {
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string id { get; set; }
+
+        [BsonElement("direccion")]
+        public string direccion { get; set; }
+
+        [BsonElement("entidad")]
+        public string entidad { get; set; }
+
+       
+    }
+}

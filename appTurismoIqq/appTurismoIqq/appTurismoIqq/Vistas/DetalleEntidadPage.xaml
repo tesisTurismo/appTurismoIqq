@@ -19,7 +19,7 @@
                 HasUnevenRows="True"
                 IsRefreshing="{Binding IsRefreshing}"
                 IsPullToRefreshEnabled="True"
-                ItemsSource="{Binding EntidadSeleccionada}"
+                ItemsSource="{Binding Direcciones}"
                 RefreshCommand="{Binding RefreshCommand}"
                 SeparatorVisibility="None">
                 <ListView.ItemTemplate>
@@ -30,12 +30,18 @@
                                     
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
-                                       
+                                        <ColumnDefinition Width="Auto"/>
 
 
                                     </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        
+                                    </Grid.RowDefinitions>
 
-                                    <StackLayout Grid.Column="0" VerticalOptions="Center">
+                                    <StackLayout Grid.Column="0" Grid.Row="0"  VerticalOptions="Center">
                                         <Label  
                                        FontAttributes="Bold" 
                                         TextColor="Black"
@@ -45,12 +51,13 @@
 
                                         </Label>
 
-                                        <Button Grid.Column="2"
+                                       
+                                    </StackLayout>
+
+                                    <Button Grid.Column="0" Grid.Row="1" 
                                     
                                         Text="Ver Mapa" BackgroundColor="LightBlue"  FontSize="Small" WidthRequest="100" HeightRequest="40" VerticalOptions="Center"></Button>
-                                    </StackLayout>
-                                  
-                                   
+
                                 </Grid>
                             </Frame>
                         </ViewCell>

@@ -24,6 +24,7 @@ namespace appTurismoIqq.Modelo
         public string telefono { get; set; }
         [BsonElement("direccion")]
         public string direccion { get; set; }
+        
         [BsonElement("latitud")]
         public double latitud { get; set; }
         [BsonElement("longitud")]
@@ -38,7 +39,7 @@ namespace appTurismoIqq.Modelo
             {
                 if (string.IsNullOrEmpty(this.foto))
                 {
-                    return "noLocal";
+                    return null;
                 }
 
                 return $"https://appturismoweb2019.azurewebsites.net/{this.foto.Substring(1)}";

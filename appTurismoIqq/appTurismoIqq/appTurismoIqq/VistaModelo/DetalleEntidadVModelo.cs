@@ -20,11 +20,19 @@ namespace appTurismoIqq.VistaModelo
         private string descripcionEntidad;
         private string pagWebEntidad;
         private static DetalleEntidadVModelo instancia;
+        public List<Direccion> MiDireccion { get; set; }
         private List<Entidad> entidadSeleccionada;
         public List<Entidad> EntidadSeleccionada
         {
             get { return this.entidadSeleccionada; }
             set { this.SetValue(ref this.entidadSeleccionada, value); }
+
+        }
+        private List<Direccion> direcciones;
+        public List<Direccion> Direcciones
+        {
+            get { return this.direcciones; }
+            set { this.SetValue(ref this.direcciones, value); }
 
         }
         public static DetalleEntidadVModelo GetInstancia()
@@ -38,6 +46,11 @@ namespace appTurismoIqq.VistaModelo
             set { this.SetValue(ref this.imageSource, value); }
         }
         public Entidad Entidad
+        {
+            get;
+            set;
+        }
+        public Direccion Direccion
         {
             get;
             set;
@@ -72,17 +85,35 @@ namespace appTurismoIqq.VistaModelo
             this.NombreEntidad = entidad.nombre;
             this.DescripcionEntidad = entidad.descripcion;
             this.PagWebEntidad = entidad.pagWeb;
-            this.LoadEntidades();
+            this.LoadDirecciones();
 
         }
+       
 
-        private async void LoadEntidades()
+
+            private async void LoadEntidades()
         {
             try
             {
                 this.IsRefreshing = true;
                 // var mongoService = new ApiServicio();
                 EntidadSeleccionada = (List<Entidad>) await apiServicios.listaEntidadesSeleccionada(Entidad.id);
+                this.IsRefreshing = false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("NO SE PUDO TOMAR LOS DATOSSSSSSS : " + e.Message);
+            }
+
+        }
+
+        private async void LoadDirecciones()
+        {
+            try
+            {
+                this.IsRefreshing = true;
+                // var mongoService = new ApiServicio();
+                Direcciones = (List<Direccion>)await apiServicios.ListaDirecciones(Entidad.nombre);
                 this.IsRefreshing = false;
             }
             catch (Exception e)

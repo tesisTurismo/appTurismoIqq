@@ -58,8 +58,7 @@ namespace appTurismoIqq.Servicios
             {
                 if (coleccionCategoria == null)
                 {
-                    string connectionString =
-                    @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                    string connectionString = @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -70,9 +69,41 @@ namespace appTurismoIqq.Servicios
                     var db = mongoClient.GetDatabase(bdname);
                     var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
                     coleccionCategoria = db.GetCollection<Categoria>("Categoria", collectionSettings);
+
+                  
+
+
+
                 }
 
                 return coleccionCategoria;
+            }
+
+        }
+
+        IMongoCollection<Direccion> coleccionDireccion;
+        IMongoCollection<Direccion> ColeccionDireccion
+
+        {
+            get
+            {
+                if (coleccionDireccion == null)
+                {
+                    string connectionString = @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                    MongoClientSettings settings = MongoClientSettings.FromUrl(
+                      new MongoUrl(connectionString)
+                    );
+                    settings.SslSettings =
+                      new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+                    var mongoClient = new MongoClient(settings);
+                    //var client = new MongoClient(conec);
+                    var db = mongoClient.GetDatabase(bdname);
+                    var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
+
+                    coleccionDireccion = db.GetCollection<Direccion>("Direccion", collectionSettings);
+                }
+
+                return coleccionDireccion;
             }
 
         }
@@ -147,7 +178,21 @@ namespace appTurismoIqq.Servicios
 
         }
 
+        public async Task<IEnumerable<Direccion>> ListaDirecciones(string nombreentidad)
+        {
+            try
+            {
 
+                var lista = ColeccionDireccion.AsQueryable<Direccion>().Where(e => e.entidad == nombreentidad).ToList();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("NO SE PUDO CAPTURAR LOS DATOS : " + e.Message);
+            }
+            return null;
+
+        }
 
 
 

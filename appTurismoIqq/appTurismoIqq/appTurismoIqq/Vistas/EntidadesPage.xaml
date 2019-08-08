@@ -6,8 +6,8 @@
     Title="Entidades">
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Entidades}" Padding="5">
-            
-           
+
+
             <ListView ItemsSource="{Binding Listaentidades}"
                       HasUnevenRows="True"
                       IsRefreshing="{Binding IsRefreshing}" 

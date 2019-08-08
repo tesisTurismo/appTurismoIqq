@@ -110,7 +110,7 @@ namespace appTurismoIqq.VistaModelo
             }
             catch (Exception e)
             {
-                Console.WriteLine("NO SE PUDO TOMAR LOS DATOSSSSSSS : " + e.Message);
+                Console.WriteLine("NO SE PUDO TOMAR LOS DATOSSSSSSSVM : " + e.Message);
             }
             
         }

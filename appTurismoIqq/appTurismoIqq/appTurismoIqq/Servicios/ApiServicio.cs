@@ -31,7 +31,7 @@ namespace appTurismoIqq.Servicios
                 if (coleccionEntidades == null)
                 {
                     string connectionString =
-                    @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+  @"mongodb://server:YWCgwDzmVTSOdzHMhmT60TlAgZVDKXicSV1kdatMDwZCJ6p590A7zASB2LgojUYYk31FPFrc1qdnFuaiwtwd9A==@server.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -58,7 +58,8 @@ namespace appTurismoIqq.Servicios
             {
                 if (coleccionCategoria == null)
                 {
-                    string connectionString = @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                    string connectionString =
+    @"mongodb://server:YWCgwDzmVTSOdzHMhmT60TlAgZVDKXicSV1kdatMDwZCJ6p590A7zASB2LgojUYYk31FPFrc1qdnFuaiwtwd9A==@server.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -89,7 +90,8 @@ namespace appTurismoIqq.Servicios
             {
                 if (coleccionDireccion == null)
                 {
-                    string connectionString = @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                    string connectionString =
+  @"mongodb://server:YWCgwDzmVTSOdzHMhmT60TlAgZVDKXicSV1kdatMDwZCJ6p590A7zASB2LgojUYYk31FPFrc1qdnFuaiwtwd9A==@server.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );

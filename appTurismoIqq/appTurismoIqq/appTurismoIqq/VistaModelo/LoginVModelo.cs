@@ -61,6 +61,10 @@ namespace appTurismoIqq.VistaModelo
                     "Aceptar");
                 return;
             }
+            
+
+
+
 
         }
 

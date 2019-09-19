@@ -163,4 +163,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\siguiente.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CategoriaD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logoInicioSesion.jpg" />
+  </ItemGroup>
 </Project>

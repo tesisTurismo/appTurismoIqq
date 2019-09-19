@@ -22,14 +22,9 @@ namespace appTurismoIqq.Modelo
         [BsonElement("entidad")]
         public string entidad { get; set; }
 
-        [BsonElement("telefono")]
-        public string telefono { get; set; }
+       
 
-        [BsonElement("latitud")]
-        public double latitud { get; set; }
-
-        [BsonElement("longitud")]
-        public double longitud { get; set; }
+       
 
         
     }

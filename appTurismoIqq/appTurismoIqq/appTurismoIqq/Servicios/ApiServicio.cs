@@ -119,59 +119,6 @@ namespace appTurismoIqq.Servicios
 
         }
 
-
-        IMongoCollection<Usuario> coleccionUsuario;
-        IMongoCollection<Usuario> ColeccionUsuario
-
-        {
-            get
-            {
-                if (coleccionUsuario == null)
-                {
-                    string connectionString =
-    @"mongodb://server:YWCgwDzmVTSOdzHMhmT60TlAgZVDKXicSV1kdatMDwZCJ6p590A7zASB2LgojUYYk31FPFrc1qdnFuaiwtwd9A==@server.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
-                    MongoClientSettings settings = MongoClientSettings.FromUrl(
-                      new MongoUrl(connectionString)
-                    );
-                    settings.SslSettings =
-                      new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
-                    var mongoClient = new MongoClient(settings);
-                    //var client = new MongoClient(conec);
-                    var db = mongoClient.GetDatabase(bdname);
-                    var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
-                    coleccionUsuario = db.GetCollection<Usuario>("Usuario", collectionSettings);
-
-
-
-
-
-                }
-
-                return coleccionUsuario;
-            }
-
-        }
-
-
-        public async Task<Usuario> listaUsuario( string Email, string Pass)
-        {
-            try
-            {
-                var lista = ColeccionUsuario.AsQueryable<Usuario>().Where(u => u.email.Equals(Email) && u.passwordU.Equals(Pass)).SingleOrDefault();
-                
-                Console.WriteLine(" HOLA "+lista);
-
-                return lista;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("NO SE PUDO CAPTURAR LOS DATOS : " + e.Message);
-            }
-            return null;
-        }
-
-
-
         public MongoClient clientemongo
         {
             get {
@@ -187,7 +134,6 @@ namespace appTurismoIqq.Servicios
                 return mongoClient;
             }
         }
-
 
         public async Task<IEnumerable<Entidad>> listaEntidades()
         {
@@ -280,14 +226,6 @@ namespace appTurismoIqq.Servicios
         {
             await ColeccionEntidades.ReplaceOneAsync( e => e.id.Equals(entidad.id),entidad);
         }
-
-
-        public async Task InsertarRegistro(Usuario user)
-        {
-            await ColeccionUsuario.InsertOneAsync(user);
-           
-        }
-
 
 
 

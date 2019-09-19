@@ -16,6 +16,8 @@ namespace appTurismoIqq.VistaModelo
 
    
         private ImageSource imageSource;
+
+        private int contador;
         private string nombreEntidad;
         private string descripcionEntidad;
         private string pagWebEntidad;
@@ -60,6 +62,13 @@ namespace appTurismoIqq.VistaModelo
             get { return this.nombreEntidad; }
             set { this.SetValue(ref this.nombreEntidad, value); }
         }
+
+        public int Contador
+        {
+            get { return this.contador; }
+            set { this.SetValue(ref this.contador, value); }
+        }
+
         public string DescripcionEntidad
         {
             get { return this.descripcionEntidad; }
@@ -86,6 +95,7 @@ namespace appTurismoIqq.VistaModelo
             this.DescripcionEntidad = entidad.descripcion;
             this.PagWebEntidad = entidad.pagWeb;
             this.LoadDirecciones();
+            this.EditarVistasEntidad();
 
         }
        
@@ -123,12 +133,55 @@ namespace appTurismoIqq.VistaModelo
 
         }
 
+        private Entidad entidades( int vista)
+        {
+           
+            return new Entidad
+            {
+                
+                id = Entidad.id,
+                foto = Entidad.foto,
+                nombre = Entidad.nombre,
+                pagWeb = Entidad.pagWeb,
+                descripcion = Entidad.descripcion,
+                descripcionEng = Entidad.descripcionEng,
+                telefono = Entidad.telefono,
+                categoria = Entidad.categoria,
+                vistas = vista
+
+            };
+        }
+        private async void EditarVistasEntidad()
+        {
+            try
+            {
+                //int vistasEntidades=vistasEntidades+1;
+                Contador = Entidad.vistas + 1;
+
+            Entidad entidadV=this.entidades(Contador);
+
+                 await apiServicios.UpdateEntidad(entidadV);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("NO SE PUDO TOMAR LA CANTIDAD DE VISTAS : " + e.Message);
+            }
+        }
+
         //comandos por ejecular al hacer click..
         public ICommand RefreshCommand
         {
             get
             {
-                return new RelayCommand(LoadEntidades);
+                return new RelayCommand(LoadDirecciones);
+            }
+        }
+
+        public ICommand EjecutarCantidadVistas
+        {
+            get
+            {
+                return new RelayCommand(EditarVistasEntidad);
             }
         }
     }

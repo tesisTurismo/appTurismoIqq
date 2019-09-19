@@ -15,18 +15,29 @@ namespace appTurismoIqq.Modelo
         public string fotoCategoria { get; set; }
         [BsonElement("nombre")]
         public string nombre { get; set; }
+        [BsonElement("nombreEng")]
+        public string nombreEng { get; set; }
+
+
         public string fotoCategoriaApp
         {
             get
             {
                 if (string.IsNullOrEmpty(this.fotoCategoria))
                 {
+
                     return "CategoriaDefault";
                 }
 
                 return "CategoriaDefault";
 
-            }
+                  
+                }
+
+                
+
+
+            
         }
     }
 }

@@ -55,6 +55,7 @@ namespace appTurismoIqq.VistaModelo
             var mylistaNVM = this.MyCategorias.Select(p => new CategoriaItemVModel
             {
                 id = p.id,
+                fotoCategoria=p.fotoCategoria,
                
                 nombre = p.nombre,
                 

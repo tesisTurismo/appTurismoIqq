@@ -24,6 +24,7 @@ namespace appTurismoIqq.Modelo
         public string nacionalidad { get; set; }
         [BsonElement("email")]
         public string email { get; set; }
+
         
     }
 }

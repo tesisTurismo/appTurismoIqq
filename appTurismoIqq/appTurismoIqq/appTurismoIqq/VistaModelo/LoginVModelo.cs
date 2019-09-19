@@ -10,9 +10,9 @@ using Xamarin.Forms;
 
 namespace appTurismoIqq.VistaModelo
 {
-    public class LoginVModelo: BaseVModelo
+    public class LoginVModelo : BaseVModelo
     {
-        private ApiServicio apiServicio = new ApiServicio(); 
+        private ApiServicio apiServicio = new ApiServicio();
         private bool isRunning;
         private bool isEnabled;
         private bool isRefreshing;
@@ -80,14 +80,14 @@ namespace appTurismoIqq.VistaModelo
             try
             {
                 this.IsRefreshing = true;
-                Usuario u =  await apiServicio.listaUsuario(this.Email, this.Password);
+                Usuario u = await apiServicio.listaUsuario(this.Email, this.Password);
                 this.IsRefreshing = false;
                 if (u != null)
                 {
                     VistaPrincipal.GetInstancia().Categorias = new CategoriasVModel();
                     await Application.Current.MainPage.Navigation.PushAsync(new CategoriasPage());
                 }
-                if (u==null)
+                if (u == null)
                 {
                     await Application.Current.MainPage.DisplayAlert(
                        "Error",
@@ -98,7 +98,7 @@ namespace appTurismoIqq.VistaModelo
             }
             catch (Exception e)
             {
-                Console.WriteLine("HUBO UNA EXCEPTION EN INICIO DE SESIÓN: "+ e.Message);
+                Console.WriteLine("HUBO UNA EXCEPTION EN INICIO DE SESIÓN: " + e.Message);
             }
 
 

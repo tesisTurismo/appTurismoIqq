@@ -11,38 +11,35 @@
                 <Image HeightRequest="150"
                        Source="logoapp">
                 </Image>
-              <Grid Margin="10,0"
-                    VerticalOptions="CenterAndExpand">
-                <Grid.ColumnDefinitions>
+                <Grid Margin="10,0"
+                      VerticalOptions="CenterAndExpand"
+                      <Grid.ColumnDefinitions>
 
-                  <ColumnDefinition Width="*"/>
-                  <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-                <Label Grid.Row="0"
-                       Grid.Column="0"
-                       Text="Email"
-                       VerticalOptions="Center">
-                </Label>
-                <Entry Grid.Row="0"
-                       Grid.Column="1"
-                       Keyboard="Email"
-                       Text="{Binding Email}" 
-                       Placeholder="Email"
-                       >
-                </Entry>
-                <Label Grid.Row="1"
-                       Grid.Column="0"
-                       Text="Contraseña"
-                       VerticalOptions="Center">
-                </Label>
-                <Entry
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    IsPassword="True"
-                    Text="{Binding Password}"
-                    Placeholder="Contraseña">
-                </Entry>
-              </Grid>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Email"
+                           VerticalOptions="Center">
+                    </Label>
+                    <Entry Grid.Row="0"
+                           Grid.Column="1"
+                           Keyboard="Email">
+                    </Entry>
+                    <Label Grid.Row="1"
+                           Grid.Column="0"
+                           Text="Contraseña"
+                           VerticalOptions="Center">
+                    </Label>
+                    <Entry
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        IsPassword="True"
+                        Text="{Binding Password}"
+                        Placeholder="Contraseña">
+                    </Entry>
+                    </Grid>
                         <StackLayout Margin="10,0"
                                      Orientation="Horizontal"
                                      VerticalOptions="CenterAndExpand">
@@ -50,7 +47,7 @@
                                             Text="Recordar cuenta"
                                             VerticalOptions="Center">
                             </Label>
-                            <Switch IsToggled="{Binding Recordar}"
+                            <Switch IsToggled="{Binding recordar}"
                                     HorizontalOptions="EndAndExpand">
                             </Switch>
                         </StackLayout>
@@ -64,7 +61,7 @@
                             </Label.GestureRecognizers>
                         </Label>
                         <ActivityIndicator
-                            IsRunning="{Binding IsRefreshing}"
+                            IsRunning="{Binding IsRunning}"
                             VerticalOptions="CenterAndExpand">
                         </ActivityIndicator>
                 <StackLayout

@@ -14,6 +14,11 @@ namespace appTurismoIqq.Modelo
         [BsonElement("direccion")]
         public string direccion { get; set; }
 
+        [BsonElement("latitud")]
+        public double latitud { get; set; }
+        [BsonElement("longitud")]
+        public double longitud { get; set; }
+
         [BsonElement("entidad")]
         public string entidad { get; set; }
 

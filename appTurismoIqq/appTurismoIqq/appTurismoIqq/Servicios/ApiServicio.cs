@@ -31,7 +31,9 @@ namespace appTurismoIqq.Servicios
                 if (coleccionEntidades == null)
                 {
                     string connectionString =
-  @"mongodb://server:YWCgwDzmVTSOdzHMhmT60TlAgZVDKXicSV1kdatMDwZCJ6p590A7zASB2LgojUYYk31FPFrc1qdnFuaiwtwd9A==@server.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
+  @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -43,9 +45,10 @@ namespace appTurismoIqq.Servicios
                     var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
                     coleccionEntidades = db.GetCollection<Entidad>("Entidad", collectionSettings);
                 }
-                
+
                 return coleccionEntidades;
             }
+        
             
         }
 
@@ -59,7 +62,11 @@ namespace appTurismoIqq.Servicios
                 if (coleccionCategoria == null)
                 {
                     string connectionString =
-    @"mongodb://server:YWCgwDzmVTSOdzHMhmT60TlAgZVDKXicSV1kdatMDwZCJ6p590A7zASB2LgojUYYk31FPFrc1qdnFuaiwtwd9A==@server.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
+  @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
+    
+
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -70,10 +77,10 @@ namespace appTurismoIqq.Servicios
                     var db = mongoClient.GetDatabase(bdname);
                     var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
                     coleccionCategoria = db.GetCollection<Categoria>("Categoria", collectionSettings);
+                    
+
 
                   
-
-
 
                 }
 
@@ -91,7 +98,9 @@ namespace appTurismoIqq.Servicios
                 if (coleccionDireccion == null)
                 {
                     string connectionString =
-  @"mongodb://server:YWCgwDzmVTSOdzHMhmT60TlAgZVDKXicSV1kdatMDwZCJ6p590A7zASB2LgojUYYk31FPFrc1qdnFuaiwtwd9A==@server.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
+  @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -110,6 +119,7 @@ namespace appTurismoIqq.Servicios
 
         }
 
+
         IMongoCollection<Usuario> coleccionUsuario;
         IMongoCollection<Usuario> ColeccionUsuario
 
@@ -119,7 +129,7 @@ namespace appTurismoIqq.Servicios
                 if (coleccionUsuario == null)
                 {
                     string connectionString =
-    @"mongodb://server:YWCgwDzmVTSOdzHMhmT60TlAgZVDKXicSV1kdatMDwZCJ6p590A7zASB2LgojUYYk31FPFrc1qdnFuaiwtwd9A==@server.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+     @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -158,6 +168,24 @@ namespace appTurismoIqq.Servicios
                 Console.WriteLine("NO SE PUDO CAPTURAR LOS DATOS : " + e.Message);
             }
             return null;
+        }
+
+
+
+        public MongoClient clientemongo
+        {
+            get {
+                string connectionString =
+      @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                MongoClientSettings settings = MongoClientSettings.FromUrl(
+                  new MongoUrl(connectionString)
+                );
+                settings.SslSettings =
+                  new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+                var mongoClient = new MongoClient(settings);
+
+                return mongoClient;
+            }
         }
 
 
@@ -247,6 +275,11 @@ namespace appTurismoIqq.Servicios
 
         }
 
+
+        public async Task UpdateEntidad(Entidad entidad)
+        {
+            await ColeccionEntidades.ReplaceOneAsync( e => e.id.Equals(entidad.id),entidad);
+        }
 
 
         public async Task InsertarRegistro(Usuario user)

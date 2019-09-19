@@ -22,7 +22,7 @@
                     FontSize="Small"
                     HorizontalOptions="Center"
                      Text="Toca la imagen para cambiar tu foto de perfil">
-                    
+
                 </Label>
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -39,7 +39,7 @@
                         Grid.Row="0"
                         Text="{Binding Nombre}"
                         Placeholder="Escriba su nombre"></Entry>
-                    
+
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
@@ -51,8 +51,8 @@
                         Text="{Binding Apellido}"
                         Placeholder="Escriba su Apellido">
                     </Entry>
-                    
-                    
+
+
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
@@ -66,9 +66,9 @@
                         Text="{Binding Contraseña}"
                         Placeholder="Ingrese Contraseña">
                     </Entry>
-                    
-                    
-                     <Label
+
+
+                    <Label
                         Grid.Column="0"
                         Grid.Row="3"
                         Text="Confirmar Contraseña"
@@ -93,7 +93,7 @@
                         Text="{Binding PaisOrigen}"
                         Placeholder="Ingrese su Pais de Origen">
                     </Entry>
-                    
+
 
                     <Label
                         Grid.Column="0"

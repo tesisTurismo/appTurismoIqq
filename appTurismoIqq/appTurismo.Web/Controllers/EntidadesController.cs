@@ -82,9 +82,9 @@ namespace appTurismo.Web.Controllers
                 descripcion = vistaEntidad.descripcion,
                 descripcionEng = vistaEntidad.descripcionEng,
                 telefono = vistaEntidad.telefono,
-                direccion = vistaEntidad.direccion,
-                latitud = vistaEntidad.latitud,
-                longitud = vistaEntidad.longitud,
+                //direccion = vistaEntidad.direccion,
+                //latitud = vistaEntidad.latitud,
+               // longitud = vistaEntidad.longitud,
                 categoria = vistaEntidad.categoria,
             };
         }
@@ -111,9 +111,7 @@ namespace appTurismo.Web.Controllers
                 descripcion = entidad.descripcion,
                 descripcionEng = entidad.descripcionEng,
                 telefono = entidad.telefono,
-                direccion = entidad.direccion,
-                latitud = entidad.latitud,
-                longitud = entidad.longitud,
+               
                 categoria = entidad.categoria,
             };
         }
@@ -136,7 +134,7 @@ namespace appTurismo.Web.Controllers
                     var update = listaentidades.FindOneAndUpdateAsync(Builders<Entidad>.Filter.Eq("id", Empdet.id),
                         Builders<Entidad>.Update.Set("foto", Empdet.foto).Set("nombre", Empdet.nombre).Set("pagWeb", Empdet.pagWeb).
                         Set("descripcion", Empdet.descripcion).Set("descripcionEng", Empdet.descripcionEng).Set("telefono",Empdet.telefono)
-                        .Set("direccion",Empdet.direccion).Set("latitud",Empdet.latitud).Set("longitud",Empdet.longitud)
+                        
                         .Set("categoria",Empdet.categoria));
                     return RedirectToAction("Index");
                 }

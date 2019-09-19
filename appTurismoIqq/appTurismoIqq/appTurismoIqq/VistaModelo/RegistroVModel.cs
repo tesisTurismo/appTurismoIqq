@@ -29,7 +29,7 @@ namespace appTurismoIqq.VistaModelo
         public string CiudadOrigen { get; set; }
         public string Nacionalidad { get; set; }
         public string Email { get; set; }
-        
+
         public bool IsRunning
         {
 
@@ -168,7 +168,8 @@ namespace appTurismoIqq.VistaModelo
                 return;
             }
 
-            var DatosUsu = new Usuario {
+            var DatosUsu = new Usuario
+            {
 
                 nombreU = Nombre,
                 apellidoU = Apellido,

@@ -14,8 +14,8 @@ namespace appTurismoIqq
             InitializeComponent();
 
             var vPrincipal = VistaPrincipal.GetInstancia();
-            vPrincipal.Resgistro = new RegistroVModel();
-            this.MainPage = new NavigationPage(new RegisterPage());
+            vPrincipal.Categorias = new CategoriasVModel();
+            this.MainPage = new NavigationPage(new CategoriasPage());
         }
 
         protected override void OnStart()

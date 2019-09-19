@@ -31,7 +31,9 @@ namespace appTurismoIqq.Servicios
                 if (coleccionEntidades == null)
                 {
                     string connectionString =
+
   @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -60,7 +62,11 @@ namespace appTurismoIqq.Servicios
                 if (coleccionCategoria == null)
                 {
                     string connectionString =
+
   @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
+    
+
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -92,7 +98,9 @@ namespace appTurismoIqq.Servicios
                 if (coleccionDireccion == null)
                 {
                     string connectionString =
+
   @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );

@@ -6,6 +6,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -54,10 +55,13 @@ namespace appTurismo.Web.Controllers
                 //almaceno los datos en la variable local
                 var entidad = this.ToEntidad(entidadvista, pic);
 
+                // comienza la conexión
                 var cliente = new MongoClient(conec);
 
                 var database = cliente.GetDatabase(bdname);
                 var listaentidades = database.GetCollection<Entidad>("entidad");
+                //termina la conexión
+
                 listaentidades.InsertOneAsync(entidad);
                 return RedirectToAction("Index");
             }
@@ -85,40 +89,98 @@ namespace appTurismo.Web.Controllers
             };
         }
         // GET: Entidades/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
-            return View();
+            var cliente = new MongoClient(conec);
+
+            var database = cliente.GetDatabase(bdname);
+            var entidad= database.GetCollection<Entidad>("entidad").Find(new BsonDocument()).ToList().AsQueryable<Entidad>().SingleOrDefault(x =>x.id== id);
+            //var result = from d in entidad.AsQueryable<Entidad>() where d.id == id select d;
+           // var view = this.ToView(result);
+            return View(entidad);
+        }
+
+        private EntidadVista ToView(Entidad entidad)
+        {
+            return new EntidadVista
+            {
+                id = entidad.id,
+                foto = entidad.foto,
+                nombre = entidad.nombre,
+                pagWeb = entidad.pagWeb,
+                descripcion = entidad.descripcion,
+                descripcionEng = entidad.descripcionEng,
+                telefono = entidad.telefono,
+               
+                categoria = entidad.categoria,
+            };
         }
 
         // POST: Entidades/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+        public ActionResult Edit(Entidad Empdet)
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
+        {
+            
+                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    var cliente = new MongoClient(conec);
+
+                    var database = cliente.GetDatabase(bdname);
+                    var listaentidades = database.GetCollection<Entidad>("entidad");
+
+
+                    var update = listaentidades.FindOneAndUpdateAsync(Builders<Entidad>.Filter.Eq("id", Empdet.id),
+                        Builders<Entidad>.Update.Set("foto", Empdet.foto).Set("nombre", Empdet.nombre).Set("pagWeb", Empdet.pagWeb).
+                        Set("descripcion", Empdet.descripcion).Set("descripcionEng", Empdet.descripcionEng).Set("telefono",Empdet.telefono)
+                        
+                        .Set("categoria",Empdet.categoria));
+                    return RedirectToAction("Index");
+                }
+
+               
+           
                 return View();
-            }
+            
         }
 
         // GET: Entidades/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(String id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var cliente = new MongoClient(conec);
+
+            var database = cliente.GetDatabase(bdname);
+            var entidad = database.GetCollection<Entidad>("entidad").Find(new BsonDocument()).ToList().AsQueryable<Entidad>().SingleOrDefault(x => x.id == id);
+            if (entidad == null)
+            {
+                return HttpNotFound();
+            }
+            return View(entidad);
         }
 
         // POST: Entidades/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(String id)
         {
             try
             {
                 // TODO: Add delete logic here
+                if (ModelState.IsValid)
+                {
+                    var cliente = new MongoClient(conec);
+
+                    var database = cliente.GetDatabase(bdname);
+                    var listaentidades = database.GetCollection<Entidad>("entidad");
+
+                    var DeleteRecord = listaentidades.DeleteOneAsync(
+                        Builders<Entidad>.Filter.Eq("id", id));
+                    
+                }
 
                 return RedirectToAction("Index");
             }

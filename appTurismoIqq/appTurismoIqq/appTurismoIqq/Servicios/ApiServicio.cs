@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace appTurismoIqq.Servicios
 {
-    
+
     public class ApiServicio
     {
         MongoClient cliente;
@@ -22,9 +22,9 @@ namespace appTurismoIqq.Servicios
         public string error { get; set; }
         public string coleccionSeleccionada { get; set; }
 
-         IMongoCollection<Entidad> coleccionEntidades;
-         IMongoCollection<Entidad> ColeccionEntidades
-        
+        IMongoCollection<Entidad> coleccionEntidades;
+        IMongoCollection<Entidad> ColeccionEntidades
+
         {
             get
             {
@@ -48,8 +48,8 @@ namespace appTurismoIqq.Servicios
 
                 return coleccionEntidades;
             }
-        
-            
+
+
         }
 
 
@@ -65,7 +65,7 @@ namespace appTurismoIqq.Servicios
 
   @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
 
-    
+
 
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
@@ -77,10 +77,10 @@ namespace appTurismoIqq.Servicios
                     var db = mongoClient.GetDatabase(bdname);
                     var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
                     coleccionCategoria = db.GetCollection<Categoria>("Categoria", collectionSettings);
-                    
 
 
-                  
+
+
 
                 }
 
@@ -119,9 +119,63 @@ namespace appTurismoIqq.Servicios
 
         }
 
+
+        IMongoCollection<Usuario> coleccionUsuario;
+        IMongoCollection<Usuario> ColeccionUsuario
+
+        {
+            get
+            {
+                if (coleccionUsuario == null)
+                {
+                    string connectionString =
+    @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                    MongoClientSettings settings = MongoClientSettings.FromUrl(
+                      new MongoUrl(connectionString)
+                    );
+                    settings.SslSettings =
+                      new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+                    var mongoClient = new MongoClient(settings);
+                    //var client = new MongoClient(conec);
+                    var db = mongoClient.GetDatabase(bdname);
+                    var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
+                    coleccionUsuario = db.GetCollection<Usuario>("Usuario", collectionSettings);
+
+
+
+
+
+                }
+
+                return coleccionUsuario;
+            }
+
+        }
+
+
+        public async Task<Usuario> listaUsuario(string Email, string Pass)
+        {
+            try
+            {
+                var lista = ColeccionUsuario.AsQueryable<Usuario>().Where(u => u.email.Equals(Email) && u.passwordU.Equals(Pass)).SingleOrDefault();
+
+                Console.WriteLine(" HOLA " + lista);
+
+                return lista;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("NO SE PUDO CAPTURAR LOS DATOS : " + e.Message);
+            }
+            return null;
+        }
+
+
+
         public MongoClient clientemongo
         {
-            get {
+            get
+            {
                 string connectionString =
       @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
                 MongoClientSettings settings = MongoClientSettings.FromUrl(
@@ -134,6 +188,7 @@ namespace appTurismoIqq.Servicios
                 return mongoClient;
             }
         }
+
 
         public async Task<IEnumerable<Entidad>> listaEntidades()
         {
@@ -173,7 +228,7 @@ namespace appTurismoIqq.Servicios
 
 
 
-        public async Task<IEnumerable<Entidad>> listaEntidadesSeleccionada( string id)
+        public async Task<IEnumerable<Entidad>> listaEntidadesSeleccionada(string id)
         {
             try
             {
@@ -193,7 +248,7 @@ namespace appTurismoIqq.Servicios
         {
             try
             {
-                
+
                 var lista = ColeccionEntidades.AsQueryable<Entidad>().Where(e => e.categoria == categoria).ToList();
                 return lista;
             }
@@ -224,8 +279,16 @@ namespace appTurismoIqq.Servicios
 
         public async Task UpdateEntidad(Entidad entidad)
         {
-            await ColeccionEntidades.ReplaceOneAsync( e => e.id.Equals(entidad.id),entidad);
+            await ColeccionEntidades.ReplaceOneAsync(e => e.id.Equals(entidad.id), entidad);
         }
+
+
+        public async Task InsertarRegistro(Usuario user)
+        {
+            await ColeccionUsuario.InsertOneAsync(user);
+
+        }
+
 
 
 

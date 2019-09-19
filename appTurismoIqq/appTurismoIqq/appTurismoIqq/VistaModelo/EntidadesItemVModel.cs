@@ -32,8 +32,9 @@ namespace appTurismoIqq.VistaModelo
         {
 
 
-
+            
             VistaPrincipal.GetInstancia().detalleEntidad = new DetalleEntidadVModelo(this);
+
             await Application.Current.MainPage.Navigation.PushAsync(new DetalleEntidadPage());
 
 

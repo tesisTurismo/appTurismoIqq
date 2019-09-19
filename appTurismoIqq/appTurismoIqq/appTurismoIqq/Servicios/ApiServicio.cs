@@ -31,7 +31,7 @@ namespace appTurismoIqq.Servicios
                 if (coleccionEntidades == null)
                 {
                     string connectionString =
-                    @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+  @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -43,9 +43,10 @@ namespace appTurismoIqq.Servicios
                     var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
                     coleccionEntidades = db.GetCollection<Entidad>("Entidad", collectionSettings);
                 }
-                
+
                 return coleccionEntidades;
             }
+        
             
         }
 
@@ -58,7 +59,8 @@ namespace appTurismoIqq.Servicios
             {
                 if (coleccionCategoria == null)
                 {
-                    string connectionString = @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                    string connectionString =
+  @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -69,10 +71,10 @@ namespace appTurismoIqq.Servicios
                     var db = mongoClient.GetDatabase(bdname);
                     var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
                     coleccionCategoria = db.GetCollection<Categoria>("Categoria", collectionSettings);
+                    
+
 
                   
-
-
 
                 }
 
@@ -89,7 +91,8 @@ namespace appTurismoIqq.Servicios
             {
                 if (coleccionDireccion == null)
                 {
-                    string connectionString = @"mongodb://servidorapp:sTlyoKhJrg0znWt2CP92NLVtIT6OHtWd9YKntpOFsClf8LKFwaStAImTdg2nLJIn9PbxXz2xv9yBShypAXvgzA==@servidorapp.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                    string connectionString =
+  @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
                     MongoClientSettings settings = MongoClientSettings.FromUrl(
                       new MongoUrl(connectionString)
                     );
@@ -106,6 +109,22 @@ namespace appTurismoIqq.Servicios
                 return coleccionDireccion;
             }
 
+        }
+
+        public MongoClient clientemongo
+        {
+            get {
+                string connectionString =
+      @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+                MongoClientSettings settings = MongoClientSettings.FromUrl(
+                  new MongoUrl(connectionString)
+                );
+                settings.SslSettings =
+                  new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+                var mongoClient = new MongoClient(settings);
+
+                return mongoClient;
+            }
         }
 
         public async Task<IEnumerable<Entidad>> listaEntidades()
@@ -194,6 +213,11 @@ namespace appTurismoIqq.Servicios
 
         }
 
+
+        public async Task UpdateEntidad(Entidad entidad)
+        {
+            await ColeccionEntidades.ReplaceOneAsync( e => e.id.Equals(entidad.id),entidad);
+        }
 
 
 

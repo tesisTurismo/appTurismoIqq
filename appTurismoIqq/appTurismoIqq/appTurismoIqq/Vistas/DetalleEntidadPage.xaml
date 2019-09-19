@@ -4,9 +4,12 @@
              x:Class="appTurismoIqq.Vistas.DetalleEntidadPage"
              BindingContext="{Binding Main,Source={StaticResource localizador}}">
     <ContentPage.Content>
-        <StackLayout BindingContext="{Binding detalleEntidad}" Padding="5">
+        <StackLayout BindingContext="{Binding detalleEntidad}" Padding="5" >
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding EjecutarCantidadVistas}" ></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
             <Label FontAttributes="Bold" Text="{Binding NombreEntidad}" FontSize="Large" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Label>
-            <Image Source="{Binding ImageSource}" WidthRequest="100"></Image>
+            <Image Source="{Binding ImageSource}" WidthRequest="100" ></Image>
             <Label Text="{Binding DescripcionEntidad}" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ></Label>
             <Label Text="Página Web" FontSize="Medium" VerticalOptions="FillAndExpand" FontAttributes="Bold"></Label>
             <Label Text="{Binding PagWebEntidad}" FontSize="Medium" VerticalOptions="FillAndExpand" ></Label>

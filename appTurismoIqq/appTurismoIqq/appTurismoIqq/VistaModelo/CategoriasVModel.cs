@@ -55,13 +55,9 @@ namespace appTurismoIqq.VistaModelo
             var mylistaNVM = this.MyCategorias.Select(p => new CategoriaItemVModel
             {
                 id = p.id,
-               
                 nombre = p.nombre,
-                
-
-
-
-
+                nombreEng=p.nombreEng
+ 
             });
             this.ListaCategorias = new List<CategoriaItemVModel>(
                 mylistaNVM.OrderBy(p => p.nombre));

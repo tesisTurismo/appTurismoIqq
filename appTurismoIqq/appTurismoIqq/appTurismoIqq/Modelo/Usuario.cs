@@ -10,21 +10,20 @@ namespace appTurismoIqq.Modelo
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string id { get; set; }
-        [BsonElement("Nombre de Usuario")]
+        [BsonElement("nombreU")]
         public string nombreU { get; set; }
-        [BsonElement("Apellido de Usuario")]
+        [BsonElement("apellidoU")]
         public string apellidoU { get; set; }
-        [BsonElement("Password")]
+        [BsonElement("passwordU")]
         public string passwordU { get; set; }
-        [BsonElement("Pais de Origen")]
-        public string PaisOrigen { get; set; }
-        [BsonElement("Ciudad de Origen")]
-        public string CiudadOrigen { get; set; }
-        [BsonElement("Nacionalidad")]
-        public string Nacionalidad { get; set; }
-        [BsonElement("Correo Electronico")]
+        [BsonElement("paisOrigen")]
+        public string paisOrigen { get; set; }
+        [BsonElement("ciudadOrigen")]
+        public string ciudadOrigen { get; set; }
+        [BsonElement("nacionalidad")]
+        public string nacionalidad { get; set; }
+        [BsonElement("email")]
         public string email { get; set; }
-        [BsonElement("Búsqueda")]
-        public string busqueda { get; set; }
+        
     }
 }

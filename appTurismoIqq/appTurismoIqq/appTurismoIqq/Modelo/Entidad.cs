@@ -22,15 +22,17 @@ namespace appTurismoIqq.Modelo
         public string descripcionEng { get; set; }
         [BsonElement("telefono")]
         public string telefono { get; set; }
-        [BsonElement("direccion")]
-        public string direccion { get; set; }
-        
-        [BsonElement("latitud")]
-        public double latitud { get; set; }
-        [BsonElement("longitud")]
-        public double longitud { get; set; }
+       
+        //[BsonElement("latitud")]
+        //public double latitud { get; set; }
+        //[BsonElement("longitud")]
+       // public double longitud { get; set; }
         [BsonElement("categoria")]
         public string categoria { get; set; }
+
+        [BsonElement("vistas")]
+        public int vistas { get; set; }
+
 
 
         public string fotoApp

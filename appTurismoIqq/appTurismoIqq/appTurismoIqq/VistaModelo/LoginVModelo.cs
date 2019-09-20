@@ -57,7 +57,18 @@ namespace appTurismoIqq.VistaModelo
 
             }
         }
-
+        public ICommand RegisterCommand
+        {
+            get
+            {
+                return new RelayCommand(IrRegistro);
+            }
+        }
+        private async void IrRegistro()
+        {
+            VistaPrincipal.GetInstancia().Registros = new RegistroVModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+        }
         private async void Login()
         {
             if (String.IsNullOrEmpty(this.Email))

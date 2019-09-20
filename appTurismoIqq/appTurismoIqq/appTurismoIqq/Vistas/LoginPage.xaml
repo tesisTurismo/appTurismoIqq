@@ -9,11 +9,11 @@
         <ScrollView BindingContext="{Binding Login}">
             <StackLayout Padding="5">
                 <Image HeightRequest="150"
-                       Source="logoapp">
+                       Source="logoInicioSesion">
                 </Image>
                 <Grid Margin="10,0"
-                      VerticalOptions="CenterAndExpand"
-                      <Grid.ColumnDefinitions>
+                      VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
 
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="2*"/>
@@ -25,7 +25,10 @@
                     </Label>
                     <Entry Grid.Row="0"
                            Grid.Column="1"
-                           Keyboard="Email">
+                           Keyboard="Email"
+                           Text="{Binding Email}"
+                            Placeholder="Correo">
+                        
                     </Entry>
                     <Label Grid.Row="1"
                            Grid.Column="0"

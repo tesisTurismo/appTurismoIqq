@@ -1,4 +1,6 @@
-﻿using appTurismoIqq.Servicios;
+﻿using appTurismoIqq.Modelo;
+using appTurismoIqq.Servicios;
+using appTurismoIqq.Vistas;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
@@ -8,14 +10,28 @@ using Xamarin.Forms;
 
 namespace appTurismoIqq.VistaModelo
 {
-    public class LoginVModelo: BaseVModelo
+    public class LoginVModelo : BaseVModelo
     {
-        private ApiServicio apiServicio; 
+        private ApiServicio apiServicio = new ApiServicio();
         private bool isRunning;
         private bool isEnabled;
+        private bool isRefreshing;
         public string Email { get; set; }
         public string Password { get; set; }
         public bool Recordar { get; set; }
+        private List<Usuario> usuarios;
+        public List<Usuario> Usuarios
+        {
+            get { return this.usuarios; }
+            set { this.SetValue(ref this.usuarios, value); }
+
+        }
+        public bool IsRefreshing
+        {
+            get { return this.isRefreshing; }
+            set { this.SetValue(ref this.isRefreshing, value); }
+        }
+
         public bool IsRunning
         {
             get { return this.isRunning; }
@@ -61,12 +77,52 @@ namespace appTurismoIqq.VistaModelo
                     "Aceptar");
                 return;
             }
-            
+            try
+            {
+                this.IsRefreshing = true;
+                Usuario u = await apiServicio.listaUsuario(this.Email, this.Password);
+                this.IsRefreshing = false;
+                if (u != null)
+                {
+                    VistaPrincipal.GetInstancia().Categorias = new CategoriasVModel();
+                    await Application.Current.MainPage.Navigation.PushAsync(new CategoriasPage());
+                }
+                if (u == null)
+                {
+                    await Application.Current.MainPage.DisplayAlert(
+                       "Error",
+                       "Email y/o Contraseña Incorrectos ",
+                       "Aceptar");
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("HUBO UNA EXCEPTION EN INICIO DE SESIÓN: " + e.Message);
+            }
 
 
 
 
         }
+
+        /*
+        private async void LoadUsers()
+        {
+            try
+            {
+                this.IsRefreshing = true;
+                // var mongoService = new ApiServicio();
+                Usuarios = (List<Usuario>)await apiServicio.listaUsuario(this.Email, this.Password);
+                this.IsRefreshing = false;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("NO SE PUDO TOMAR LOS DATOSSSSSSS : " + e.Message);
+            }
+
+        }
+        */
 
 
     }

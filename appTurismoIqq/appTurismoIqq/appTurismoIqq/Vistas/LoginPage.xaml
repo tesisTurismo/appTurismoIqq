@@ -50,7 +50,7 @@
                                             Text="Recordar cuenta"
                                             VerticalOptions="Center">
                             </Label>
-                            <Switch IsToggled="{Binding recordar}"
+                            <Switch IsToggled="{Binding Recordar}"
                                     HorizontalOptions="EndAndExpand">
                             </Switch>
                         </StackLayout>

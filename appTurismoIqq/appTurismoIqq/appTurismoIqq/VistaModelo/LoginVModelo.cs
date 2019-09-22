@@ -1,4 +1,5 @@
-﻿using appTurismoIqq.Modelo;
+﻿using appTurismoIqq.Helpers;
+using appTurismoIqq.Modelo;
 using appTurismoIqq.Servicios;
 using appTurismoIqq.Vistas;
 using GalaSoft.MvvmLight.Command;
@@ -105,7 +106,7 @@ namespace appTurismoIqq.VistaModelo
                        "Email y/o Contraseña Incorrectos ",
                        "Aceptar");
                 }
-
+                Settings.IsRemembered = this.Recordar;
             }
             catch (Exception e)
             {

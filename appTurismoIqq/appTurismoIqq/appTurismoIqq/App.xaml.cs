@@ -13,6 +13,7 @@ namespace appTurismoIqq
         public App()
         {
             InitializeComponent();
+
             var vPrincipal = VistaPrincipal.GetInstancia();
             if (Settings.IsRemembered)
             {
@@ -21,12 +22,11 @@ namespace appTurismoIqq
             }
             else
             {
-                
+
                 vPrincipal.Login = new LoginVModelo();
                 this.MainPage = new NavigationPage(new LoginPage());
             }
 
-           
         }
 
         protected override void OnStart()

@@ -5,7 +5,6 @@ using appTurismoIqq.Vistas;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -16,7 +15,6 @@ namespace appTurismoIqq.VistaModelo
         private ApiServicio apiServicio = new ApiServicio();
         private bool isRunning;
         private bool isEnabled;
-        private bool isRefreshing;
         public string Email { get; set; }
         public string Password { get; set; }
         public bool Recordar { get; set; }
@@ -27,10 +25,11 @@ namespace appTurismoIqq.VistaModelo
             set { this.SetValue(ref this.usuarios, value); }
 
         }
-        public bool IsRefreshing
+
+        public bool IsEnabled
         {
-            get { return this.isRefreshing; }
-            set { this.SetValue(ref this.isRefreshing, value); }
+            get { return this.isEnabled; }
+            set { this.SetValue(ref this.isEnabled, value); }
         }
 
         public bool IsRunning
@@ -39,25 +38,13 @@ namespace appTurismoIqq.VistaModelo
             set { this.SetValue(ref this.isRunning, value); }
         }
 
-        public bool IsEnabled
-        {
-            get { return this.isEnabled; }
-            set { this.SetValue(ref this.isEnabled, value); }
-        }
-
         public LoginVModelo()
         {
+            this.apiServicio = new ApiServicio();
             this.IsEnabled = true;
             this.Recordar = true;
         }
-        public ICommand LoginCommand
-        {
-            get
-            {
-                return new RelayCommand(Login);
-
-            }
-        }
+       
         public ICommand RegisterCommand
         {
             get
@@ -70,8 +57,18 @@ namespace appTurismoIqq.VistaModelo
             VistaPrincipal.GetInstancia().Registros = new RegistroVModel();
             await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
         }
+
+        public ICommand LoginCommand
+        {
+            get
+            {
+                return new RelayCommand(Login);
+
+            }
+        }
         private async void Login()
         {
+            
             if (String.IsNullOrEmpty(this.Email))
             {
                 await Application.Current.MainPage.DisplayAlert(
@@ -89,23 +86,33 @@ namespace appTurismoIqq.VistaModelo
                     "Aceptar");
                 return;
             }
+            this.IsRunning = true;
+            this.IsEnabled = false;
+
             try
             {
-                this.IsRefreshing = true;
+               
+
                 Usuario u = await apiServicio.listaUsuario(this.Email, this.Password);
-                this.IsRefreshing = false;
+                
                 if (u != null)
                 {
+                   
                     VistaPrincipal.GetInstancia().Categorias = new CategoriasVModel();
                     await Application.Current.MainPage.Navigation.PushAsync(new CategoriasPage());
-                }
+                    
+                } 
+                
                 if (u == null)
                 {
+                    
                     await Application.Current.MainPage.DisplayAlert(
                        "Error",
                        "Email y/o Contraseña Incorrectos ",
                        "Aceptar");
+                   
                 }
+
                 Settings.IsRemembered = this.Recordar;
             }
             catch (Exception e)
@@ -139,3 +146,4 @@ namespace appTurismoIqq.VistaModelo
 
     }
 }
+

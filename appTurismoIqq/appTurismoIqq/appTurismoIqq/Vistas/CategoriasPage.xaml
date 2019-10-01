@@ -40,6 +40,12 @@
 
 
                                         </Label>
+
+
+                                        
+
+
+
                                     </StackLayout>
                                   
 
@@ -48,12 +54,23 @@
 
 
                                 </Grid>
+                                
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
 
             </ListView>
+            <Button
+                                BackgroundColor="Navy"
+                                BorderRadius="23"
+                                Command="{Binding CerrarCommand}"
+                                HeightRequest="46"
+                                HorizontalOptions="FillAndExpand"
+                                IsEnabled="{Binding IsEnabled}"
+                                Text="Cerrar Sesión"
+                                TextColor="White">
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -22,9 +22,9 @@ namespace appTurismoIqq.Modelo
         [BsonElement("entidad")]
         public string entidad { get; set; }
 
-        
+       
 
-        
+       
 
         
     }

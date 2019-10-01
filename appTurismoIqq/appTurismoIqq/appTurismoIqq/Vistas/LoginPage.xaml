@@ -4,7 +4,7 @@
              x:Class="appTurismoIqq.Vistas.LoginPage"
              BindingContext="{Binding Main,Source={StaticResource localizador}}"
              Title="Iniciar Sesión">
-                
+
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding Login}">
             <StackLayout Padding="5">
@@ -15,8 +15,8 @@
                       VerticalOptions="CenterAndExpand">
                     <Grid.ColumnDefinitions>
 
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0"
                            Grid.Column="0"
@@ -28,7 +28,7 @@
                            Keyboard="Email"
                            Text="{Binding Email}"
                             Placeholder="Correo">
-                        
+
                     </Entry>
                     <Label Grid.Row="1"
                            Grid.Column="0"
@@ -42,31 +42,31 @@
                         Text="{Binding Password}"
                         Placeholder="Contraseña">
                     </Entry>
-                    </Grid>
-                        <StackLayout Margin="10,0"
+                </Grid>
+                <StackLayout Margin="10,0"
                                      Orientation="Horizontal"
                                      VerticalOptions="CenterAndExpand">
-                            <Label HorizontalOptions="StartAndExpand"
+                    <Label HorizontalOptions="StartAndExpand"
                                             Text="Recordar cuenta"
                                             VerticalOptions="Center">
-                            </Label>
-                            <Switch IsToggled="{Binding Recordar}"
+                    </Label>
+                    <Switch IsToggled="{Binding Recordar}"
                                     HorizontalOptions="EndAndExpand">
-                            </Switch>
-                        </StackLayout>
-                        <Label
+                    </Switch>
+                </StackLayout>
+                <Label
                             HorizontalOptions="Center"
                             Text="Has olvidado tu contraseña"
                             TextColor="Blue"
                             VerticalOptions="EndAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ForgotPasswordComand}"></TapGestureRecognizer>   
-                            </Label.GestureRecognizers>
-                        </Label>
-                        <ActivityIndicator
-                            IsRunning="{Binding IsRunning}"
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ForgotPasswordComand}"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <ActivityIndicator
+                           IsRunning="{Binding IsRunning}"
                             VerticalOptions="CenterAndExpand">
-                        </ActivityIndicator>
+                </ActivityIndicator>
                 <StackLayout
                             Margin="40,0"
                             Orientation="Horizontal"

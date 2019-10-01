@@ -1,11 +1,14 @@
-﻿using appTurismoIqq.Modelo;
+﻿using appTurismoIqq.Helpers;
+using appTurismoIqq.Modelo;
 using appTurismoIqq.Servicios;
+using appTurismoIqq.Vistas;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace appTurismoIqq.VistaModelo
 {
@@ -92,5 +95,23 @@ namespace appTurismoIqq.VistaModelo
                 return new RelayCommand(LoadCategorias);
             }
         }
+
+
+        public ICommand CerrarCommand
+        {
+            get
+            {
+                return new RelayCommand(Cerrar);
+            }
+
+        }
+
+        private void Cerrar()
+        {
+            Settings.IsRemembered = false;
+            VistaPrincipal.GetInstancia().Login = new LoginVModelo();
+            Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
+        }
+
     }
 }

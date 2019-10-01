@@ -9,12 +9,12 @@ using Xamarin.Forms.Xaml;
 
 namespace appTurismoIqq.Vistas
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterPage : ContentPage
-    {
-        public RegisterPage()
-        {
-            InitializeComponent();
-        }
-    }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class RegisterPage : ContentPage
+	{
+		public RegisterPage ()
+		{
+			InitializeComponent ();
+		}
+	}
 }

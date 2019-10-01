@@ -19,7 +19,7 @@ namespace appTurismoIqq.Helpers
         #region Setting Constants
 
         private const string isRemembered = "IsRemembered";
-        
+
         private static readonly bool booleanDefault = false;
 
 

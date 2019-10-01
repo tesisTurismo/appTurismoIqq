@@ -1,7 +1,6 @@
 ﻿using appTurismoIqq.Helpers;
 using appTurismoIqq.Modelo;
 using appTurismoIqq.Servicios;
-using appTurismoIqq.Vistas;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
@@ -9,12 +8,14 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
+
+
 namespace appTurismoIqq.VistaModelo
 {
     public class RegistroVModel : BaseVModelo
     {
 
-     ApiServicio apiServicio = new ApiServicio();
+        private ApiServicio apiServicio = new ApiServicio();
 
         //private ImageSource imageSource;
         private bool isRunning;
@@ -180,25 +181,50 @@ namespace appTurismoIqq.VistaModelo
 
 
             };
-            try
-            {
-                await apiServicio.InsertarRegistro(DatosUsu);
+            await apiServicio.InsertarRegistro(DatosUsu);
 
-                this.IsRunning = true;
-                this.IsEnabled = false;
-                await Application.Current.MainPage.DisplayAlert("Mensaje",
-                    "Se ha registrado exitosamente",
-                    "Aceptar");
-                VistaPrincipal.GetInstancia().Login = new LoginVModelo();
-                await Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
-            }
-            catch (Exception e)
-            {
-
-            }
-            
+            this.IsRunning = true;
+            this.IsEnabled = false;
 
         } //Cierre metodo Guardar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     } //Cierre de la clase RegistroVModel

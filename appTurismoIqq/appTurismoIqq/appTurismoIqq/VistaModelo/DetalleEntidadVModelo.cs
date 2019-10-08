@@ -1,4 +1,5 @@
-﻿using appTurismoIqq.Modelo;
+﻿using appTurismoIqq.Geolocalizacion;
+using appTurismoIqq.Modelo;
 using appTurismoIqq.Servicios;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -17,9 +18,12 @@ namespace appTurismoIqq.VistaModelo
    
         private ImageSource imageSource;
 
+        private double latitud;
+        private double longitud;
         private int contador;
         private string nombreEntidad;
         private string descripcionEntidad;
+        private string descripcionEntidadEng;
         private string pagWebEntidad;
         private static DetalleEntidadVModelo instancia;
         public List<Direccion> MiDireccion { get; set; }
@@ -57,6 +61,19 @@ namespace appTurismoIqq.VistaModelo
             get;
             set;
         }
+
+        public double Latitud
+        {
+            get { return this.latitud; }
+            set { this.SetValue(ref this.latitud, value); }
+        }
+
+        public double Longitud
+        {
+            get { return this.longitud; }
+            set { this.SetValue(ref this.longitud, value); }
+        }
+
         public string NombreEntidad
         {
             get { return this.nombreEntidad; }
@@ -74,6 +91,13 @@ namespace appTurismoIqq.VistaModelo
             get { return this.descripcionEntidad; }
             set { this.SetValue(ref this.descripcionEntidad, value); }
         }
+
+        public string DescripcionEntidadEng
+        {
+            get { return this.descripcionEntidad; }
+            set { this.SetValue(ref this.descripcionEntidadEng, value); }
+        }
+
         public string PagWebEntidad
         {
             get { return this.pagWebEntidad; }
@@ -85,6 +109,11 @@ namespace appTurismoIqq.VistaModelo
             set { this.SetValue(ref this.isRefreshing, value); }
 
         }
+
+        public double latitud2;
+        public double longitud2;
+        public string calle1;
+
         public DetalleEntidadVModelo(Entidad entidad)
         {
             instancia = this;
@@ -93,7 +122,13 @@ namespace appTurismoIqq.VistaModelo
             this.ImageSource = entidad.fotoApp;
             this.NombreEntidad = entidad.nombre;
             this.DescripcionEntidad = entidad.descripcion;
+            this.DescripcionEntidadEng = entidad.descripcionEng;
             this.PagWebEntidad = entidad.pagWeb;
+            this.Longitud = Direccion.longitud;
+            this.Latitud = Direccion.latitud;
+            latitud2 = Direccion.latitud;
+            longitud2 = Direccion.longitud;
+            calle1 = Direccion.direccion;
             this.LoadDirecciones();
             this.EditarVistasEntidad();
 
@@ -183,6 +218,21 @@ namespace appTurismoIqq.VistaModelo
             {
                 return new RelayCommand(EditarVistasEntidad);
             }
+        }
+
+        public ICommand MapaCommand2
+        {
+            get
+            {
+                return new RelayCommand(IrMapa2);
+            }
+        }
+
+        private async void IrMapa2()
+        {
+           //   VistaPrincipal.GetInstancia().DetalleSucursales = new DetalleSucursalVModelo(this);
+            await Application.Current.MainPage.Navigation.PushAsync(new MapAppPage2(latitud2, longitud2, calle1));
+
         }
     }
 }

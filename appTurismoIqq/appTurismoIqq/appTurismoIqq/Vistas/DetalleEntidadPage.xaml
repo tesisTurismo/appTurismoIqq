@@ -59,7 +59,7 @@
 
                                     <Button Grid.Column="0" Grid.Row="1" 
                                     
-                                        Text="Ver Mapa" BackgroundColor="LightBlue"  FontSize="Small" WidthRequest="100" HeightRequest="40" VerticalOptions="Center"></Button>
+                                        Text="Ver Mapa" BackgroundColor="LightBlue"  FontSize="Small" WidthRequest="100" HeightRequest="40" VerticalOptions="Center" Command="{Binding MapaCommand2}"></Button>
 
                                 </Grid>
                             </Frame>

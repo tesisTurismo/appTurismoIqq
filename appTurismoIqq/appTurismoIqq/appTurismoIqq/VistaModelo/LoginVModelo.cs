@@ -68,26 +68,31 @@ namespace appTurismoIqq.VistaModelo
         }
         private async void Login()
         {
-            
+            this.IsRunning = true;
+            this.IsEnabled = false;
             if (String.IsNullOrEmpty(this.Email))
             {
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     "Debe ingresar su email",
                     "Aceptar");
+
                 return;
             }
 
             if (string.IsNullOrEmpty(this.Password))
             {
+                this.IsRunning = false;
+                this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
                     "Debe ingresar su contraseña",
                     "Aceptar");
                 return;
             }
-            this.IsRunning = true;
-            this.IsEnabled = false;
+            
 
             try
             {
@@ -97,23 +102,29 @@ namespace appTurismoIqq.VistaModelo
                 
                 if (u != null)
                 {
-                   
+                    
+                    Settings.IsRemembered = this.Recordar;
                     VistaPrincipal.GetInstancia().Categorias = new CategoriasVModel();
                     await Application.Current.MainPage.Navigation.PushAsync(new CategoriasPage());
-                    
-                } 
-                
-                if (u == null)
-                {
-                    
-                    await Application.Current.MainPage.DisplayAlert(
-                       "Error",
-                       "Email y/o Contraseña Incorrectos ",
-                       "Aceptar");
-                   
-                }
 
-                Settings.IsRemembered = this.Recordar;
+                }
+                else
+                {
+                    if (u == null)
+                    {
+                        this.IsRunning = false;
+                        this.IsEnabled = true;
+                        await Application.Current.MainPage.DisplayAlert(
+                           "Error",
+                           "Email y/o Contraseña Incorrectos ",
+                           "Aceptar");
+
+                    }
+                }
+                
+                
+
+               
             }
             catch (Exception e)
             {

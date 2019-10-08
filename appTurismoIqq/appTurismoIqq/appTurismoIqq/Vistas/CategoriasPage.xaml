@@ -25,7 +25,15 @@
                                         
 
                                     </Grid.ColumnDefinitions>
-                                    
+                                    <Image 
+                                    Grid.Column="0"
+
+                                    Source="{Binding fotoCategoriaApp}" 
+                                    WidthRequest="100"
+                                    HeightRequest="100">
+
+                                    </Image>
+
 
 
 

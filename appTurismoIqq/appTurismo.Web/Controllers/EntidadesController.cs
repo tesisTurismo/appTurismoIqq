@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Security.Authentication;
 using System.Web;
 using System.Web.Mvc;
 
@@ -16,13 +17,35 @@ namespace appTurismo.Web.Controllers
     {
         string conec = "mongodb+srv://user:tesis123456@tesis1-7onzc.azure.mongodb.net/test";
         string bdname = "bdTurismo";
+
+        string connectionString =
+
+ @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+
+
+
+        
+
+
         // GET: Entidades
         public ActionResult Index()
         {
-            var cliente = new MongoClient(conec);
+            MongoClientSettings settings = MongoClientSettings.FromUrl(
+          new MongoUrl(connectionString)
+        );
+            settings.SslSettings =
+                          new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+            var mongoClient = new MongoClient(settings);
+            //var client = new MongoClient(conec);
+            var db = mongoClient.GetDatabase(bdname);
+            var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
+           
 
-            var database = cliente.GetDatabase(bdname);
-            var listaentidades = database.GetCollection<Entidad>("entidad").Find(new BsonDocument()).ToList();
+
+           // var cliente = new MongoClient(conec);
+
+            //var database = cliente.GetDatabase(bdname);
+            var listaentidades = db.GetCollection<Entidad>("Entidad").Find(new BsonDocument()).ToList();
             return View(listaentidades);
         }
 
@@ -56,10 +79,22 @@ namespace appTurismo.Web.Controllers
                 var entidad = this.ToEntidad(entidadvista, pic);
 
                 // comienza la conexión
-                var cliente = new MongoClient(conec);
+                MongoClientSettings settings = MongoClientSettings.FromUrl(
+          new MongoUrl(connectionString)
+        );
+                settings.SslSettings =
+                              new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+                var mongoClient = new MongoClient(settings);
+                //var client = new MongoClient(conec);
+                var db = mongoClient.GetDatabase(bdname);
+                var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
 
-                var database = cliente.GetDatabase(bdname);
-                var listaentidades = database.GetCollection<Entidad>("entidad");
+
+
+                // var cliente = new MongoClient(conec);
+
+                //var database = cliente.GetDatabase(bdname);
+                var listaentidades = db.GetCollection<Entidad>("Entidad");
                 //termina la conexión
 
                 listaentidades.InsertOneAsync(entidad);
@@ -82,10 +117,9 @@ namespace appTurismo.Web.Controllers
                 descripcion = vistaEntidad.descripcion,
                 descripcionEng = vistaEntidad.descripcionEng,
                 telefono = vistaEntidad.telefono,
-                //direccion = vistaEntidad.direccion,
-                //latitud = vistaEntidad.latitud,
-               // longitud = vistaEntidad.longitud,
+               
                 categoria = vistaEntidad.categoria,
+                vistas= vistaEntidad.vistas
             };
         }
         // GET: Entidades/Edit/5
@@ -113,6 +147,7 @@ namespace appTurismo.Web.Controllers
                 telefono = entidad.telefono,
                
                 categoria = entidad.categoria,
+                vistas= entidad.vistas
             };
         }
 

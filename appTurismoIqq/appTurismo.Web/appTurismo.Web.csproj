@@ -186,6 +186,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\MongoContext.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\EntidadController.cs" />
     <Compile Include="Controllers\EntidadesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -194,6 +195,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FilesHelpers.cs" />
+    <Compile Include="Models\CategoriaVista.cs" />
     <Compile Include="Models\EntidadVista.cs" />
     <Compile Include="Models\UsuarioVista.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -203,7 +205,10 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\ImagenesCategorias\Captura de estructura.PNG" />
+    <Content Include="Content\ImagenesCategorias\logoApp.jpg" />
     <Content Include="Content\ImagenesEntidades\28468569_680575295399982_4253780509546512384_n.jpg" />
+    <Content Include="Content\ImagenesEntidades\5e79a0a3-fe04-4264-a2eb-9e435a5841e9.jpg" />
     <Content Include="Content\ImagenesEntidades\bulldog.jpg" />
     <Content Include="Content\ImagenesEntidades\chifananking.jpg" />
     <Content Include="Content\ImagenesEntidades\hotelhilton.jpg" />
@@ -214,6 +219,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\appTurismoWeb2019 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\appTurismoWeb201910 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -243,10 +249,12 @@
     <Content Include="Views\Entidad\Create.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
-    <Content Include="Views\Entidades\Index.cshtml" />
-    <Content Include="Views\Entidades\Create.cshtml" />
     <Content Include="Views\Entidades\Edit.cshtml" />
     <Content Include="Views\Entidades\Delete.cshtml" />
+    <Content Include="Views\Entidades\Index.cshtml" />
+    <Content Include="Views\Entidades\Create.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Categoria\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

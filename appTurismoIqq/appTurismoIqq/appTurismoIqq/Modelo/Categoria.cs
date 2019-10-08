@@ -26,7 +26,7 @@ namespace appTurismoIqq.Modelo
                     return null;
                 }
 
-                return null;
+                return $"https://appturismoweb201910.azurewebsites.net/{this.fotoCategoria.Substring(1)}";
 
             }
         }

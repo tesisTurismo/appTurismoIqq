@@ -23,7 +23,6 @@ namespace appTurismoIqq.Modelo
 
         [BsonElement("telefono")]
         public string telefono { get; set; }
-       
 
         [BsonElement("categoria")]
         public string categoria { get; set; }
@@ -42,7 +41,7 @@ namespace appTurismoIqq.Modelo
                     return null;
                 }
 
-                return $"https://appturismoweb2019.azurewebsites.net/{this.foto.Substring(1)}";
+                return $"https://appturismoweb201910.azurewebsites.net/{this.foto.Substring(1)}";
 
             }
         }

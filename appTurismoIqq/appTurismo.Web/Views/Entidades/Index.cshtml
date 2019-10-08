@@ -30,17 +30,12 @@
             @Html.DisplayNameFor(model => model.telefono)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.latitud)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.longitud)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.categoria)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.vistas)
+        </th>
+       
         <th></th>
     </tr>
 
@@ -68,17 +63,12 @@
             @Html.DisplayFor(modelItem => item.telefono)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.direccion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.latitud)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.longitud)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.categoria)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.vistas)
+        </td>
+       
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |

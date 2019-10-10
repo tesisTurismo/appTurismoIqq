@@ -77,25 +77,7 @@ namespace appTurismoIqq.VistaModelo
             
             
         }
-        /*
-       async Task ExecuteRefreshCommand()
-        {
-            if (rpta)
-                return;
-
-            rpta = true;
-
-            try
-            {
-                var mongoService = new ApiServicio();
-                Listaentidades = await mongoService.listaEntidades();
-            }
-            finally
-            {
-                rpta = false;
-            }
-        }
-       */
+      
 
         //métodos
         private async void LoadEntidades()

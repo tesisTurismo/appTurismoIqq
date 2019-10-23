@@ -30,7 +30,9 @@
                         <ViewCell>
                             <Frame  Margin="5">
                                 <Grid>
-                                    
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DetalleDireccionCommand}"/>
+                                    </Grid.GestureRecognizers>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="Auto"/>
@@ -54,15 +56,10 @@
 
                                         </Label>
 
-                                       
+                                       <Button Text="Ver detalle" BackgroundColor="LightBlue"  FontSize="Small" WidthRequest="100" HeightRequest="40" VerticalOptions="Center" Command="{Binding DetalleDireccionCommand}"></Button>
                                     </StackLayout>
 
-                                    <Button Grid.Column="0" Grid.Row="1" 
                                     
-                                         Text="Ver Mapa" BackgroundColor="LightBlue" 
-                                         FontSize="Small" WidthRequest="100" HeightRequest="40" 
-                                            VerticalOptions="Center"
-                                            Command="IrMapa"></Button>
 
                                 </Grid>
                             </Frame>

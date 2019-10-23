@@ -4,6 +4,7 @@ using appTurismoIqq.Servicios;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -12,17 +13,21 @@ namespace appTurismoIqq.VistaModelo
 {
     public class DetalleEntidadVModelo:BaseVModelo
     {
+        private static DetalleEntidadVModelo instancia;
         private ApiServicio apiServicios;
         private bool isRefreshing;
+        
 
-   
         private ImageSource imageSource;
 
+        private double latitud;
+        private double longitud;
         private int contador;
         private string nombreEntidad;
         private string descripcionEntidad;
+        private string descripcionEntidadEng;
         private string pagWebEntidad;
-        private static DetalleEntidadVModelo instancia;
+        
         public List<Direccion> MiDireccion { get; set; }
         private List<Entidad> entidadSeleccionada;
         public List<Entidad> EntidadSeleccionada
@@ -31,13 +36,16 @@ namespace appTurismoIqq.VistaModelo
             set { this.SetValue(ref this.entidadSeleccionada, value); }
 
         }
-        private List<Direccion> direcciones;
-        public List<Direccion> Direcciones
+        private List<DetalleDireccionItemVModel> direcciones;
+        public List<DetalleDireccionItemVModel> Direcciones
         {
             get { return this.direcciones; }
             set { this.SetValue(ref this.direcciones, value); }
 
         }
+
+        
+
         public static DetalleEntidadVModelo GetInstancia()
         {
 
@@ -58,6 +66,9 @@ namespace appTurismoIqq.VistaModelo
             get;
             set;
         }
+
+       
+
         public string NombreEntidad
         {
             get { return this.nombreEntidad; }
@@ -75,6 +86,13 @@ namespace appTurismoIqq.VistaModelo
             get { return this.descripcionEntidad; }
             set { this.SetValue(ref this.descripcionEntidad, value); }
         }
+
+        public string DescripcionEntidadEng
+        {
+            get { return this.descripcionEntidad; }
+            set { this.SetValue(ref this.descripcionEntidadEng, value); }
+        }
+
         public string PagWebEntidad
         {
             get { return this.pagWebEntidad; }
@@ -86,6 +104,12 @@ namespace appTurismoIqq.VistaModelo
             set { this.SetValue(ref this.isRefreshing, value); }
 
         }
+
+        public double latitud2;
+        public double longitud2;
+        public string calle1;
+
+        
         public DetalleEntidadVModelo(Entidad entidad)
         {
             instancia = this;
@@ -94,6 +118,7 @@ namespace appTurismoIqq.VistaModelo
             this.ImageSource = entidad.fotoApp;
             this.NombreEntidad = entidad.nombre;
             this.DescripcionEntidad = entidad.descripcion;
+            this.DescripcionEntidadEng = entidad.descripcionEng;
             this.PagWebEntidad = entidad.pagWeb;
             this.LoadDirecciones();
             this.EditarVistasEntidad();
@@ -108,7 +133,7 @@ namespace appTurismoIqq.VistaModelo
             {
                 this.IsRefreshing = true;
                 // var mongoService = new ApiServicio();
-                EntidadSeleccionada = (List<Entidad>) await apiServicios.listaEntidadesSeleccionada(Entidad.id);
+                EntidadSeleccionada = (List<Entidad>) await apiServicios.listaEntidadesSeleccionada(Entidad.id);               
                 this.IsRefreshing = false;
             }
             catch (Exception e)
@@ -117,14 +142,34 @@ namespace appTurismoIqq.VistaModelo
             }
 
         }
+        public void RefreshList()
+        {
 
+            var mylistaNVMDirecciones = this.MiDireccion.Select(p => new DetalleDireccionItemVModel
+            {
+                id = p.id,
+                direccion = p.direccion,
+                latitud = p.latitud,
+                longitud = p.longitud,
+                entidad = p.entidad
+                
+
+            });
+            this.Direcciones = new List<DetalleDireccionItemVModel>(
+                mylistaNVMDirecciones.OrderBy(p => p.direccion));
+             
+
+        }
+        
         private async void LoadDirecciones()
         {
             try
             {
                 this.IsRefreshing = true;
                 // var mongoService = new ApiServicio();
-                Direcciones = (List<Direccion>)await apiServicios.ListaDirecciones(Entidad.nombre);
+                MiDireccion = (List<Direccion>)await apiServicios.ListaDirecciones(Entidad.nombre);
+                
+                RefreshList();
                 this.IsRefreshing = false;
             }
             catch (Exception e)
@@ -183,6 +228,7 @@ namespace appTurismoIqq.VistaModelo
             }
         }
 
+        
         public ICommand EjecutarCantidadVistas
         {
             get
@@ -191,15 +237,5 @@ namespace appTurismoIqq.VistaModelo
             }
         }
 
-
-       /* public ICommand IrMapa
-        {
-            get
-            {
-                return new RelayCommand(IrMapaEntidad);
-            }
-        }*/
-
-       
     }
 }

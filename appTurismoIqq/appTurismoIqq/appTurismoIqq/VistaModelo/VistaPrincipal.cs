@@ -11,6 +11,7 @@ namespace appTurismoIqq.VistaModelo
         public CategoriasVModel Categorias { get; set; }
         public LoginVModelo Login { get; set; }
         public RegistroVModel Registros { get; set; }
+        public DetalleDireccionVModel Direcciones { get; set; }
         public VistaPrincipal()
         {
             //this.Entidades = new EntidadesVModelo();

@@ -19,7 +19,7 @@ namespace appTurismo.Web.Controllers
 
         string connectionString =
 
- @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+ @"mongodb://appturismo:0hSQ4nkxAj325uSDCe4QRmCj9czKA4jHymyvt5XIZrd4g4Tr38vk549MnftCB1nHA8EE1G4PxqeAVBjL8BWq5A==@appturismo.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@appturismo@";
 
         // GET: Categoria
         public ActionResult Index()
@@ -105,10 +105,10 @@ namespace appTurismo.Web.Controllers
         {
             return new Categoria
             {
-                id=categoriavista.id,
-                fotoCategoria=pic,
-                nombre=categoriavista.nombre,
-                nombreEng=categoriavista.nombreEng,
+                id = categoriavista.id,
+                fotoCategoria = pic,
+                nombre = categoriavista.nombre,
+                nombreEng = categoriavista.nombreEng,
             };
         }
 

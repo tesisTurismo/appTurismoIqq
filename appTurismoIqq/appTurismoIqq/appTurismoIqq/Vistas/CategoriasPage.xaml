@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="appTurismoIqq.Vistas.CategoriasPage" BindingContext="{Binding Main,Source={StaticResource localizador}}"
-    Title="Entidades">
+    Title="Categorias">
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Categorias}" Padding="5">
 

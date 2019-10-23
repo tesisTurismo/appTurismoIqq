@@ -17,6 +17,8 @@ namespace appTurismo.Web.App_Start
         public string conec = "mongodb+srv://user:tesis123456@tesis1-7onzc.azure.mongodb.net/test";
         public string bdname="bdTurismo";
 
+      
+
         public MongoContext()
         {
             

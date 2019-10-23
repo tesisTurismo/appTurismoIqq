@@ -1,4 +1,5 @@
-﻿using appTurismoIqq.Modelo;
+﻿using appTurismoIqq.Helpers;
+using appTurismoIqq.Modelo;
 using appTurismoIqq.Servicios;
 using appTurismoIqq.Vistas;
 using GalaSoft.MvvmLight.Command;
@@ -25,6 +26,8 @@ namespace appTurismoIqq.VistaModelo
             }
         }
 
+
+        
         private async void IrCategoria()
         {
 

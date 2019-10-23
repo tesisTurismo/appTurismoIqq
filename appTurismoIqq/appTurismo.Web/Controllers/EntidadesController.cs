@@ -20,11 +20,11 @@ namespace appTurismo.Web.Controllers
 
         string connectionString =
 
- @"mongodb://servidor:5wrPsCPPQAiNGJ0IGnQP2mhfjLp59NgH1Q30l5avlxVZiGXkaJZYwadRRCQWPax22F23YooD6GDAp5aO1jsxpw==@servidor.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+ @"mongodb://appturismo:0hSQ4nkxAj325uSDCe4QRmCj9czKA4jHymyvt5XIZrd4g4Tr38vk549MnftCB1nHA8EE1G4PxqeAVBjL8BWq5A==@appturismo.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@appturismo@";
 
 
 
-        
+
 
 
         // GET: Entidades
@@ -39,10 +39,10 @@ namespace appTurismo.Web.Controllers
             //var client = new MongoClient(conec);
             var db = mongoClient.GetDatabase(bdname);
             var collectionSettings = new MongoCollectionSettings { ReadPreference = ReadPreference.Nearest };
-           
 
 
-           // var cliente = new MongoClient(conec);
+
+            // var cliente = new MongoClient(conec);
 
             //var database = cliente.GetDatabase(bdname);
             var listaentidades = db.GetCollection<Entidad>("Entidad").Find(new BsonDocument()).ToList();
@@ -117,9 +117,9 @@ namespace appTurismo.Web.Controllers
                 descripcion = vistaEntidad.descripcion,
                 descripcionEng = vistaEntidad.descripcionEng,
                 telefono = vistaEntidad.telefono,
-               
+
                 categoria = vistaEntidad.categoria,
-                vistas= vistaEntidad.vistas
+                vistas = vistaEntidad.vistas
             };
         }
         // GET: Entidades/Edit/5
@@ -128,9 +128,9 @@ namespace appTurismo.Web.Controllers
             var cliente = new MongoClient(conec);
 
             var database = cliente.GetDatabase(bdname);
-            var entidad= database.GetCollection<Entidad>("entidad").Find(new BsonDocument()).ToList().AsQueryable<Entidad>().SingleOrDefault(x =>x.id== id);
+            var entidad = database.GetCollection<Entidad>("entidad").Find(new BsonDocument()).ToList().AsQueryable<Entidad>().SingleOrDefault(x => x.id == id);
             //var result = from d in entidad.AsQueryable<Entidad>() where d.id == id select d;
-           // var view = this.ToView(result);
+            // var view = this.ToView(result);
             return View(entidad);
         }
 
@@ -145,9 +145,9 @@ namespace appTurismo.Web.Controllers
                 descripcion = entidad.descripcion,
                 descripcionEng = entidad.descripcionEng,
                 telefono = entidad.telefono,
-               
+
                 categoria = entidad.categoria,
-                vistas= entidad.vistas
+                vistas = entidad.vistas
             };
         }
 
@@ -156,28 +156,28 @@ namespace appTurismo.Web.Controllers
         public ActionResult Edit(Entidad Empdet)
 
         {
-            
-                // TODO: Add update logic here
-                if (ModelState.IsValid)
-                {
-                    var cliente = new MongoClient(conec);
 
-                    var database = cliente.GetDatabase(bdname);
-                    var listaentidades = database.GetCollection<Entidad>("entidad");
+            // TODO: Add update logic here
+            if (ModelState.IsValid)
+            {
+                var cliente = new MongoClient(conec);
+
+                var database = cliente.GetDatabase(bdname);
+                var listaentidades = database.GetCollection<Entidad>("entidad");
 
 
-                    var update = listaentidades.FindOneAndUpdateAsync(Builders<Entidad>.Filter.Eq("id", Empdet.id),
-                        Builders<Entidad>.Update.Set("foto", Empdet.foto).Set("nombre", Empdet.nombre).Set("pagWeb", Empdet.pagWeb).
-                        Set("descripcion", Empdet.descripcion).Set("descripcionEng", Empdet.descripcionEng).Set("telefono",Empdet.telefono)
-                        
-                        .Set("categoria",Empdet.categoria));
-                    return RedirectToAction("Index");
-                }
+                var update = listaentidades.FindOneAndUpdateAsync(Builders<Entidad>.Filter.Eq("id", Empdet.id),
+                    Builders<Entidad>.Update.Set("foto", Empdet.foto).Set("nombre", Empdet.nombre).Set("pagWeb", Empdet.pagWeb).
+                    Set("descripcion", Empdet.descripcion).Set("descripcionEng", Empdet.descripcionEng).Set("telefono", Empdet.telefono)
 
-               
-           
-                return View();
-            
+                    .Set("categoria", Empdet.categoria));
+                return RedirectToAction("Index");
+            }
+
+
+
+            return View();
+
         }
 
         // GET: Entidades/Delete/5
@@ -214,7 +214,7 @@ namespace appTurismo.Web.Controllers
 
                     var DeleteRecord = listaentidades.DeleteOneAsync(
                         Builders<Entidad>.Filter.Eq("id", id));
-                    
+
                 }
 
                 return RedirectToAction("Index");

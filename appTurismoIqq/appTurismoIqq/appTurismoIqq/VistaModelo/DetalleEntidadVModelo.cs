@@ -1,4 +1,5 @@
-﻿using appTurismoIqq.Modelo;
+﻿using appTurismoIqq.Geolocalizacion;
+using appTurismoIqq.Modelo;
 using appTurismoIqq.Servicios;
 using GalaSoft.MvvmLight.Command;
 using System;
@@ -168,6 +169,11 @@ namespace appTurismoIqq.VistaModelo
             }
         }
 
+
+      /*  private async void IrMapaEntidad()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new MapAppPage2());
+        }*/
         //comandos por ejecular al hacer click..
         public ICommand RefreshCommand
         {
@@ -184,5 +190,16 @@ namespace appTurismoIqq.VistaModelo
                 return new RelayCommand(EditarVistasEntidad);
             }
         }
+
+
+       /* public ICommand IrMapa
+        {
+            get
+            {
+                return new RelayCommand(IrMapaEntidad);
+            }
+        }*/
+
+       
     }
 }

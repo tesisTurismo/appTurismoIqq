@@ -231,11 +231,17 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\ImagenesCategorias\Captura de estructura.PNG" />
+    <Content Include="Content\ImagenesCategorias\cerveza.png" />
+    <Content Include="Content\ImagenesCategorias\destino.png" />
+    <Content Include="Content\ImagenesCategorias\hospital.png" />
+    <Content Include="Content\ImagenesCategorias\hotel.png" />
     <Content Include="Content\ImagenesCategorias\logoApp.jpg" />
+    <Content Include="Content\ImagenesCategorias\mesa-restaurante.png" />
     <Content Include="Content\ImagenesEntidades\28468569_680575295399982_4253780509546512384_n.jpg" />
     <Content Include="Content\ImagenesEntidades\5e79a0a3-fe04-4264-a2eb-9e435a5841e9.jpg" />
     <Content Include="Content\ImagenesEntidades\bulldog.jpg" />
     <Content Include="Content\ImagenesEntidades\chifananking.jpg" />
+    <Content Include="Content\ImagenesEntidades\excursionismo.png" />
     <Content Include="Content\ImagenesEntidades\hotelhilton.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -246,6 +252,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\appTurismoWeb2019 - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\appTurismoWeb201910 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\appTurismoWeb20191022092238 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

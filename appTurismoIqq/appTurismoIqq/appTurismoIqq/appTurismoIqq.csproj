@@ -23,7 +23,7 @@
     <EmbeddedResource Update="Vistas\CategoriasPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vistas\DetalleDirecciones.xaml">
+    <EmbeddedResource Update="Vistas\DetalleDireccionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Vistas\DetalleEntidadPage.xaml">

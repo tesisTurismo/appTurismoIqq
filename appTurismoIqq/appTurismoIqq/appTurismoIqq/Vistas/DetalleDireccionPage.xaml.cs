@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace appTurismoIqq.Vistas
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DetalleDirecciones : ContentPage
+	public partial class DetalleDireccionPage : ContentPage
 	{
-		public DetalleDirecciones ()
+		public DetalleDireccionPage ()
 		{
 			InitializeComponent ();
 		}

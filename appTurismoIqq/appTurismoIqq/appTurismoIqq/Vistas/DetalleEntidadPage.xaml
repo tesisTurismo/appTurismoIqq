@@ -43,7 +43,7 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
-                                        
+
                                     </Grid.RowDefinitions>
 
                                     <StackLayout Grid.Column="0" Grid.Row="0"  VerticalOptions="Center">
@@ -55,11 +55,14 @@
 
 
                                         </Label>
+                                        <Button 
+                                    
+                                        Text="Detalle" BackgroundColor="LightBlue"  FontSize="Small" WidthRequest="100" HeightRequest="40" VerticalOptions="Center"></Button>
 
-                                       <Button Text="Ver detalle" BackgroundColor="LightBlue"  FontSize="Small" WidthRequest="100" HeightRequest="40" VerticalOptions="Center" Command="{Binding DetalleDireccionCommand}"></Button>
+
                                     </StackLayout>
 
-                                    
+
 
                                 </Grid>
                             </Frame>

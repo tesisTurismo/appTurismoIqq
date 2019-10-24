@@ -21,8 +21,8 @@ namespace appTurismoIqq.Modelo
         [BsonElement("descripcionEng")]
         public string descripcionEng { get; set; }
 
-        [BsonElement("telefono")]
-        public string telefono { get; set; }
+       // [BsonElement("telefono")]
+       // public string telefono { get; set; }
 
         [BsonElement("categoria")]
         public string categoria { get; set; }

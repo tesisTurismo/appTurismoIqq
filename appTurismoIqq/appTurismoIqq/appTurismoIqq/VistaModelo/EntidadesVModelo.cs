@@ -63,7 +63,7 @@ namespace appTurismoIqq.VistaModelo
                     descripcion = p.descripcion,
                     descripcionEng = p.descripcionEng,
 
-                    telefono = p.telefono,
+                 //   telefono = p.telefono,
                   
                     categoria = p.categoria,
                     vistas=p.vistas

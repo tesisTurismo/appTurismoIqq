@@ -116,7 +116,7 @@ namespace appTurismo.Web.Controllers
                 pagWeb = vistaEntidad.pagWeb,
                 descripcion = vistaEntidad.descripcion,
                 descripcionEng = vistaEntidad.descripcionEng,
-                telefono = vistaEntidad.telefono,
+              //  telefono = vistaEntidad.telefono,
 
                 categoria = vistaEntidad.categoria,
                 vistas = vistaEntidad.vistas
@@ -144,7 +144,7 @@ namespace appTurismo.Web.Controllers
                 pagWeb = entidad.pagWeb,
                 descripcion = entidad.descripcion,
                 descripcionEng = entidad.descripcionEng,
-                telefono = entidad.telefono,
+             //   telefono = entidad.telefono,
 
                 categoria = entidad.categoria,
                 vistas = entidad.vistas
@@ -168,7 +168,7 @@ namespace appTurismo.Web.Controllers
 
                 var update = listaentidades.FindOneAndUpdateAsync(Builders<Entidad>.Filter.Eq("id", Empdet.id),
                     Builders<Entidad>.Update.Set("foto", Empdet.foto).Set("nombre", Empdet.nombre).Set("pagWeb", Empdet.pagWeb).
-                    Set("descripcion", Empdet.descripcion).Set("descripcionEng", Empdet.descripcionEng).Set("telefono", Empdet.telefono)
+                    Set("descripcion", Empdet.descripcion).Set("descripcionEng", Empdet.descripcionEng)
 
                     .Set("categoria", Empdet.categoria));
                 return RedirectToAction("Index");

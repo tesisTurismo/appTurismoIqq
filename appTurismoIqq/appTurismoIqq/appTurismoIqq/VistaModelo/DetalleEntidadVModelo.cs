@@ -1,5 +1,6 @@
 ﻿using appTurismoIqq.Modelo;
 using appTurismoIqq.Servicios;
+using appTurismoIqq.Vistas;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
@@ -109,11 +110,7 @@ namespace appTurismoIqq.VistaModelo
                 direccion = p.direccion,
                 latitud = p.latitud,
                 longitud = p.longitud,
-                entidad = p.entidad
-
-
-
-
+                entidad = p.entidad,
             });
             this.Direcciones = new List<DetalleEntidadItemVModelo>(
                 mylistaNVM.OrderBy(p => p.direccion));
@@ -166,7 +163,7 @@ namespace appTurismoIqq.VistaModelo
                 pagWeb = Entidad.pagWeb,
                 descripcion = Entidad.descripcion,
                 descripcionEng = Entidad.descripcionEng,
-                telefono = Entidad.telefono,
+             //  telefono = Entidad.telefono,
                 categoria = Entidad.categoria,
                 vistas = vista
 
@@ -188,6 +185,8 @@ namespace appTurismoIqq.VistaModelo
                 Console.WriteLine("NO SE PUDO TOMAR LA CANTIDAD DE VISTAS : " + e.Message);
             }
         }
+
+        
 
         //comandos por ejecular al hacer click..
         public ICommand RefreshCommand

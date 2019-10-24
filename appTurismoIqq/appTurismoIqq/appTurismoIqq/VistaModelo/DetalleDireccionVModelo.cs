@@ -38,7 +38,8 @@ namespace appTurismoIqq.VistaModelo
             this.Direccion = direccion;
             this.apiServicio = new ApiServicio();
             this.DireccionLugar = direccion.direccion;
-
+            this.Latitud = latitud;
+            this.Longitud = longitud;
         }
     }
 }

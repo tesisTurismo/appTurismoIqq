@@ -12,24 +12,43 @@
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
 
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
-
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+                    <Label Grid.Column="0"
+                       Grid.Row="0" FontAttributes="Bold"
+                       Text="Información"
+                       FontSize="Large" TextColor="Black"
+                       VerticalOptions="Center" HorizontalOptions="Center"></Label>
 
-                    <Label Grid.Column="0" 
-                       Grid.Row="0" FontAttributes="Bold" 
-                       Text="Dirección" 
-                       FontSize="Medium" TextColor="Black" 
-                       VerticalOptions="FillAndExpand" ></Label>
-                    <Label Grid.Column="0" 
+                    <Label Grid.Column="0"
+                       Grid.Row="1" FontAttributes="Bold"
+                       Text="Dirección"
+                       FontSize="Medium" TextColor="Black"
+                       VerticalOptions="CenterAndExpand" ></Label>
+
+                    <Label Grid.Column="1"
                        Grid.Row="1"  
-                       Text="{Binding DireccionLugar}" 
-                       FontSize="Medium" TextColor="Black" 
+                       Text="{Binding DireccionLugar}"
+                       FontSize="Medium" TextColor="Black"
                        VerticalOptions="FillAndExpand" ></Label>
 
+                    <Label Grid.Column="0"
+                       Grid.Row="2" FontAttributes="Bold"
+                       Text="Teléfono"
+                       FontSize="Medium" TextColor="Black"
+                       VerticalOptions="CenterAndExpand" ></Label>
+
+                    <Label Grid.Column="1"
+                       Grid.Row="2"  
+                       Text="{Binding Telefono}"
+                       FontSize="Medium" TextColor="Black"
+                       VerticalOptions="FillAndExpand" TextDecorations="Underline"></Label>
                 </Grid>
                 <Button Text="Ver Mapa" FontSize="Small" BackgroundColor="LightBlue" HorizontalOptions="Center" ></Button>
 

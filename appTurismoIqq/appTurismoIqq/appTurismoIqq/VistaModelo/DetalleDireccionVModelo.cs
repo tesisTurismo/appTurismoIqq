@@ -10,6 +10,8 @@ namespace appTurismoIqq.VistaModelo
     {
         private Direccion direccion;
         private string direccionLugar;
+        private string telefono;
+
         private double latitud;
         private double longitud;
         private ApiServicio apiServicio;
@@ -22,6 +24,11 @@ namespace appTurismoIqq.VistaModelo
         {
             get { return this.direccionLugar; }
             set { this.SetValue(ref this.direccionLugar, value); }
+        }
+        public string Telefono
+        {
+            get { return this.telefono; }
+            set { this.SetValue(ref this.telefono, value); }
         }
         public double Latitud
         {
@@ -38,8 +45,8 @@ namespace appTurismoIqq.VistaModelo
             this.Direccion = direccion;
             this.apiServicio = new ApiServicio();
             this.DireccionLugar = direccion.direccion;
-            this.Latitud = latitud;
-            this.Longitud = longitud;
+            this.Telefono = direccion.telefono;
+            
         }
     }
 }

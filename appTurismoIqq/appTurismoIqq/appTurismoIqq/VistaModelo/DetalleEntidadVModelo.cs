@@ -111,6 +111,7 @@ namespace appTurismoIqq.VistaModelo
                 latitud = p.latitud,
                 longitud = p.longitud,
                 entidad = p.entidad,
+                telefono = p.telefono
             });
             this.Direcciones = new List<DetalleEntidadItemVModelo>(
                 mylistaNVM.OrderBy(p => p.direccion));
@@ -187,6 +188,7 @@ namespace appTurismoIqq.VistaModelo
         }
 
         
+
 
         //comandos por ejecular al hacer click..
         public ICommand RefreshCommand

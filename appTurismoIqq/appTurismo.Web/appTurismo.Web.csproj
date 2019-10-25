@@ -182,6 +182,9 @@
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.3.4.0.1008975\lib\netstandard2.0\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.GoogleMaps, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.GoogleMaps.3.3.0\lib\netstandard2.0\Xamarin.Forms.GoogleMaps.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Maps, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Forms.Maps.3.4.0.1008975\lib\netstandard2.0\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>

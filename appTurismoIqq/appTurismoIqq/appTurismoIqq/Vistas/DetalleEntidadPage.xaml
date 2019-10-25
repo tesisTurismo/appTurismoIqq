@@ -57,7 +57,7 @@
                                         </Label>
                                         <Button 
                                     
-                                        Text="Detalle" BackgroundColor="LightBlue"  FontSize="Small" WidthRequest="100" HeightRequest="40" VerticalOptions="Center"></Button>
+                                        Text="Detalle" BackgroundColor="LightBlue"  FontSize="Small" WidthRequest="100" HeightRequest="40" VerticalOptions="Center"  Command="{Binding DetalleDireccionCommand}"></Button>
 
 
                                     </StackLayout>

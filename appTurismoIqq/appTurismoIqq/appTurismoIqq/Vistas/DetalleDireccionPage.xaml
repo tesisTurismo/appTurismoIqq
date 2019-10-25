@@ -43,14 +43,17 @@
                        Text="Teléfono"
                        FontSize="Medium" TextColor="Black"
                        VerticalOptions="CenterAndExpand" ></Label>
-
+                    
                     <Label Grid.Column="1"
                        Grid.Row="2"  
                        Text="{Binding Telefono}"
                        FontSize="Medium" TextColor="Black"
                        VerticalOptions="FillAndExpand" TextDecorations="Underline"></Label>
+
+                    
+
                 </Grid>
-                <Button Text="Ver Mapa" FontSize="Small" BackgroundColor="LightBlue" HorizontalOptions="Center" ></Button>
+                <Button Text="Ver Mapa" FontSize="Small" BackgroundColor="LightBlue" HorizontalOptions="Center"  Command="{Binding MapaCommand2}"></Button>
 
             </StackLayout>
         </ScrollView>

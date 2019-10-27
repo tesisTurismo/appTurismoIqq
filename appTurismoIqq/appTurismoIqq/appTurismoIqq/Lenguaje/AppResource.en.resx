@@ -117,22 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Apellido" xml:space="preserve">
+    <value>Last name</value>
+  </data>
+  <data name="CambiarFoto" xml:space="preserve">
+    <value>Touch to change your profile picture</value>
+  </data>
+  <data name="Categorias" xml:space="preserve">
+    <value>Categories</value>
+  </data>
+  <data name="CerrarSesion" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="CiudadOrigen" xml:space="preserve">
+    <value>Origin city</value>
+  </data>
+  <data name="ConfirmarContraseña" xml:space="preserve">
+    <value>Confirm your password</value>
+  </data>
   <data name="Contraseña" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="Detalles" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Direccion" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Direcciones" xml:space="preserve">
+    <value>Addresses</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="Entidades" xml:space="preserve">
+    <value>Entities</value>
+  </data>
+  <data name="EscribirApellido" xml:space="preserve">
+    <value>Write your last name</value>
+  </data>
+  <data name="EscribirCiudadOrigen" xml:space="preserve">
+    <value>Write your origin city</value>
+  </data>
+  <data name="EscribirContraseña" xml:space="preserve">
+    <value>Write your password</value>
+  </data>
+  <data name="EscribirEmail" xml:space="preserve">
+    <value>Write your email</value>
+  </data>
+  <data name="EscribirNacionalidad" xml:space="preserve">
+    <value>Write your nationality</value>
+  </data>
+  <data name="EscribirNombre" xml:space="preserve">
+    <value>Write your name</value>
+  </data>
+  <data name="EscribirPaisOrigen" xml:space="preserve">
+    <value>Write your country of origin</value>
+  </data>
+  <data name="Informacion" xml:space="preserve">
+    <value>Information</value>
+  </data>
   <data name="IniciarSesion" xml:space="preserve">
     <value>Login in</value>
   </data>
+  <data name="Nacionalidad" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="Nombre" xml:space="preserve">
+    <value>Name</value>
+  </data>
   <data name="OlvidarContraseña" xml:space="preserve">
     <value>I forgot the password</value>
+  </data>
+  <data name="PaginaWeb" xml:space="preserve">
+    <value>Web page</value>
+  </data>
+  <data name="PaisOrigen" xml:space="preserve">
+    <value>Country of origin</value>
   </data>
   <data name="RecordarCuenta" xml:space="preserve">
     <value>Remember account</value>
   </data>
   <data name="Registrar" xml:space="preserve">
     <value>Sign in</value>
+  </data>
+  <data name="Telefono" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="VerMapa" xml:space="preserve">
+    <value>See map</value>
   </data>
 </root>

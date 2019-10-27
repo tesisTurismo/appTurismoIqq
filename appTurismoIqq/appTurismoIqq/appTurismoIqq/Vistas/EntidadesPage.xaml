@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="appTurismoIqq.Vistas.EntidadesPage"
+             xmlns:i18n="clr-namespace:appTurismoIqq.Helpers;assembly=appTurismoIqq"
             BindingContext="{Binding Main,Source={StaticResource localizador}}"
-    Title="Entidades">
+    Title="{i18n:Translate Entidades}">
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Entidades}" Padding="5">
 

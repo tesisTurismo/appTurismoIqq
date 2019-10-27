@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="appTurismoIqq.Vistas.LoginPage"
+             xmlns:i18n="clr-namespace:appTurismoIqq.Helpers;assembly=appTurismoIqq"
              BindingContext="{Binding Main,Source={StaticResource localizador}}"
-             Title="Iniciar Sesión">
+             Title="{i18n:Translate IniciarSesion}">
 
     <ContentPage.Content>
         <ScrollView BindingContext="{Binding Login}">
@@ -20,19 +21,19 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0"
                            Grid.Column="0"
-                           Text="Email"
+                           Text="{i18n:Translate Email}"
                            VerticalOptions="Center">
                     </Label>
                     <Entry Grid.Row="0"
                            Grid.Column="1"
                            Keyboard="Email"
                            Text="{Binding Email}"
-                            Placeholder="Correo">
+                            Placeholder="{i18n:Translate Email}">
 
                     </Entry>
                     <Label Grid.Row="1"
                            Grid.Column="0"
-                           Text="Contraseña"
+                           Text="{i18n:Translate Contraseña}"
                            VerticalOptions="Center">
                     </Label>
                     <Entry
@@ -40,14 +41,14 @@
                         Grid.Column="1"
                         IsPassword="True"
                         Text="{Binding Password}"
-                        Placeholder="Contraseña">
+                        Placeholder="{i18n:Translate Contraseña}">
                     </Entry>
                 </Grid>
                 <StackLayout Margin="10,0"
                                      Orientation="Horizontal"
                                      VerticalOptions="CenterAndExpand">
                     <Label HorizontalOptions="StartAndExpand"
-                                            Text="Recordar cuenta"
+                                            Text="{i18n:Translate RecordarCuenta}"
                                             VerticalOptions="Center">
                     </Label>
                     <Switch IsToggled="{Binding Recordar}"
@@ -56,7 +57,7 @@
                 </StackLayout>
                 <Label
                             HorizontalOptions="Center"
-                            Text="Has olvidado tu contraseña"
+                            Text="{i18n:Translate OlvidarContraseña}"
                             TextColor="Blue"
                             VerticalOptions="EndAndExpand">
                     <Label.GestureRecognizers>
@@ -78,7 +79,7 @@
                                 HeightRequest="46"
                                 HorizontalOptions="FillAndExpand"
                                 IsEnabled="{Binding IsEnabled}"
-                                Text="Iniciar Sesión"
+                                Text="{i18n:Translate IniciarSesion}"
                                 TextColor="White">
                     </Button>
                     <Button
@@ -88,7 +89,7 @@
                                 HeightRequest="46"
                                 HorizontalOptions="FillAndExpand"
                                 IsEnabled="{Binding IsEnabled}"
-                                Text="Registrate"
+                                Text="{i18n:Translate Registrar}"
                                 TextColor="White">
                     </Button>
                 </StackLayout>

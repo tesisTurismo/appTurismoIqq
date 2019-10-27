@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="appTurismoIqq.Vistas.DetalleDireccionPage"
+             xmlns:i18n="clr-namespace:appTurismoIqq.Helpers;assembly=appTurismoIqq"
              BindingContext="{Binding Main,Source={StaticResource localizador}}"
-             Title="Información">
+             Title="{i18n:Translate Informacion}">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout BindingContext="{Binding detalleDireccion}" Padding="5" >
@@ -22,13 +23,13 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0"
                        Grid.Row="0" FontAttributes="Bold"
-                       Text="Información"
+                       Text="{i18n:Translate Informacion}"
                        FontSize="Large" TextColor="Black"
                        VerticalOptions="Center" HorizontalOptions="Center"></Label>
 
                     <Label Grid.Column="0"
                        Grid.Row="1" FontAttributes="Bold"
-                       Text="Dirección"
+                       Text="{i18n:Translate Direccion}"
                        FontSize="Medium" TextColor="Black"
                        VerticalOptions="CenterAndExpand" ></Label>
 
@@ -40,7 +41,7 @@
 
                     <Label Grid.Column="0"
                        Grid.Row="2" FontAttributes="Bold"
-                       Text="Teléfono"
+                       Text="{i18n:Translate Telefono}"
                        FontSize="Medium" TextColor="Black"
                        VerticalOptions="CenterAndExpand" ></Label>
                     
@@ -53,7 +54,7 @@
                     
 
                 </Grid>
-                <Button Text="Ver Mapa" FontSize="Small" BackgroundColor="LightBlue" HorizontalOptions="Center"  Command="{Binding MapaCommand2}"></Button>
+                <Button Text="{i18n:Translate VerMapa}" FontSize="Small" BackgroundColor="LightBlue" HorizontalOptions="Center"  Command="{Binding MapaCommand2}"></Button>
 
             </StackLayout>
         </ScrollView>

@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using Xamarin.Essentials;
 using Map = Xamarin.Forms.Maps.Map;
 using Map2 = Xamarin.Essentials.Map;
+using Plugin.Geolocator;
 
 /*
   En esta clase se instancia el mapa de google para su utilización, además de manejar la geolocalización para mostrar ubicaciones
@@ -27,27 +28,12 @@ namespace appTurismoIqq.Geolocalizacion
     public partial class MapAppPage2 : ContentPage
 
     {
-
+        
 
         public MapAppPage2(double lat, double lon, string calle)
         {
             InitializeComponent();
-
-            /* Aqui simplemente se crea un boton que se utilizará para mostrar nuestra posición 
-             Tras una actualización esta idea ha sido desechada para instanciar la posición del usuario y  
-              la ubicación deseada por lo que este código quedará comentado 
-             
-            Button button = new Button()
-            {
-                Text = "MyLocation",
-                TextColor = Color.White,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.Center,
-                BackgroundColor = Color.Accent
-            };
-
-    */
-
+          
             /* Botón que se utilizará para trazar la dirección desde el punto de origen hasta 
              la localización deseada, es posible que este botón sea desechado también en pos de instanciar el mapa con la ruta trazada
              
@@ -60,8 +46,7 @@ namespace appTurismoIqq.Geolocalizacion
                 VerticalOptions = LayoutOptions.Center,
                 BackgroundColor = Color.Accent
             };
-
-
+            
 
             // Se crea la unidad logica del mapa que utilizaremos
             Map map = new Map // Se declara la variable map
@@ -72,11 +57,15 @@ namespace appTurismoIqq.Geolocalizacion
                                                                // por toda la pantalla
                 HorizontalOptions = LayoutOptions.FillAndExpand, // Lo mismo que la de arriba pero horizontalment
 
+                
+            
 
+        };
+            
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(-20.247508, -70.133661), Distance.FromMiles(1)).WithZoom(100));
 
-            };
             // Para mover el mapa de su posición por default 
-            map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(-20.2203600, -70.1391300), Distance.FromMiles(1)));
+
 
             //Declaración de una variable tipo pin
             var pin3 = new Pin()

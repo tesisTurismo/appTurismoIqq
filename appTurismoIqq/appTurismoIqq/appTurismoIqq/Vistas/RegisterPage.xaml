@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="appTurismoIqq.Vistas.RegisterPage"
+             xmlns:i18n="clr-namespace:appTurismoIqq.Helpers;assembly=appTurismoIqq"
              BindingContext="{Binding Main,Source={StaticResource localizador}}">
     <ContentPage.Content>
         <ScrollView
@@ -21,7 +22,7 @@
                 <Label
                     FontSize="Small"
                     HorizontalOptions="Center"
-                     Text="Toca la imagen para cambiar tu foto de perfil">
+                     Text="{i18n:Translate CambiarFoto}">
 
                 </Label>
                 <Grid>
@@ -32,31 +33,31 @@
                     <Label
                         Grid.Column="0"
                         Grid.Row="0"
-                        Text="Nombre"
+                        Text="{i18n:Translate Nombre}"
                         VerticalOptions="Center"></Label>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="0"
                         Text="{Binding Nombre}"
-                        Placeholder="Escriba su nombre"></Entry>
+                        Placeholder="{i18n:Translate EscribirNombre}"></Entry>
 
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
-                        Text="Apellido"
+                        Text="{i18n:Translate Apellido}"
                         VerticalOptions="Center"></Label>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="1"
                         Text="{Binding Apellido}"
-                        Placeholder="Escriba su Apellido">
+                        Placeholder="{i18n:Translate EscribirApellido}">
                     </Entry>
 
 
                     <Label
                         Grid.Column="0"
                         Grid.Row="2"
-                        Text="Contraseña"
+                        Text="{i18n:Translate Contraseña}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
@@ -64,7 +65,7 @@
                         Grid.Row="2"
                         IsPassword="True"
                         Text="{Binding Contraseña}"
-                        Placeholder="Ingrese Contraseña">
+                        Placeholder="{i18n:Translate EscribirContraseña}">
                     </Entry>
 
 
@@ -79,59 +80,59 @@
                         Grid.Row="3"
                         IsPassword="True"
                         Text="{Binding ConfirmarContraseña}"
-                        Placeholder="Confirme su Contraseña">
+                        Placeholder="{i18n:Translate ConfirmarContraseña}">
                     </Entry>
                     <Label
                         Grid.Column="0"
                         Grid.Row="4"
-                        Text="Pais de Oriogen"
+                        Text="{i18n:Translate PaisOrigen}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="4"                    
                         Text="{Binding PaisOrigen}"
-                        Placeholder="Ingrese su Pais de Origen">
+                        Placeholder="{i18n:Translate EscribirPaisOrigen}">
                     </Entry>
 
 
                     <Label
                         Grid.Column="0"
                         Grid.Row="5"
-                        Text="Ciudad de Origen"
+                        Text="{i18n:Translate CiudadOrigen}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="5"
                         Text="{Binding CiudadOrigen}"
-                        Placeholder="Ingrese su Ciudad de Origen">
+                        Placeholder="{i18n:Translate EscribirCiudadOrigen}">
                     </Entry>
 
                     <Label
                         Grid.Column="0"
                         Grid.Row="6"
-                        Text="Nacionalidad"
+                        Text="{Binding Nacionalidad}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="6"
                         Text="{Binding Nacionalidad}"
-                        Placeholder="Ingrese su Nacionalidad">
+                        Placeholder="{Binding EscribirNacionalidad}">
                     </Entry>
 
                     <Label
                         Grid.Column="0"
                         Grid.Row="7"
-                        Text="Email"
+                        Text="{Binding Email}"
                         VerticalOptions="Center">
                     </Label>
                     <Entry
                         Grid.Column="1"
                         Grid.Row="7"
                         Text="{Binding Email}"
-                        Placeholder="Ingrese su Email">
+                        Placeholder="{Binding EscribirEmail}">
                     </Entry>
                 </Grid>
                 <ActivityIndicator
@@ -145,7 +146,7 @@
                     Command="{Binding SaveCommand}"
                     HeightRequest="46"
                     IsEnabled="{Binding IsEnabled}"
-                    Text="Registrar"
+                    Text="{Binding Registrar}"
                     TextColor="White">
                 </Button>
             </StackLayout>

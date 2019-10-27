@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:i18n="clr-namespace:appTurismoIqq.Helpers;assembly=appTurismoIqq"
              x:Class="appTurismoIqq.Vistas.CategoriasPage" BindingContext="{Binding Main,Source={StaticResource localizador}}"
-    Title="Categorias">
+    Title="{i18n:Translate Categorias}">
     <ContentPage.Content>
         <StackLayout BindingContext="{Binding Categorias}" Padding="5">
 
@@ -76,7 +77,7 @@
                                 HeightRequest="46"
                                 HorizontalOptions="FillAndExpand"
                                 IsEnabled="{Binding IsEnabled}"
-                                Text="Cerrar Sesión"
+                                Text="{i18n:Translate CerrarSesion}"
                                 TextColor="White">
             </Button>
         </StackLayout>

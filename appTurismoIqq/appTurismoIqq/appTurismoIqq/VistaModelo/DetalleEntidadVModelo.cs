@@ -4,6 +4,7 @@ using appTurismoIqq.Vistas;
 using GalaSoft.MvvmLight.Command;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Input;
@@ -11,17 +12,21 @@ using Xamarin.Forms;
 
 namespace appTurismoIqq.VistaModelo
 {
+    
+
     public class DetalleEntidadVModelo : BaseVModelo
     {
         private ApiServicio apiServicios;
         private bool isRefreshing;
 
+        
 
-        private ImageSource imageSource;
+private ImageSource imageSource;
 
         private int contador;
         private string nombreEntidad;
         private string descripcionEntidad;
+        private string descripcionEntidadEng;
         private string pagWebEntidad;
         private static DetalleEntidadVModelo instancia;
         public List<Direccion> MiDireccion { get; set; }
@@ -76,6 +81,13 @@ namespace appTurismoIqq.VistaModelo
             get { return this.descripcionEntidad; }
             set { this.SetValue(ref this.descripcionEntidad, value); }
         }
+
+        public string DescripcionEntidadEng
+        {
+            get { return this.descripcionEntidadEng; }
+            set { this.SetValue(ref this.descripcionEntidadEng, value); }
+        }
+
         public string PagWebEntidad
         {
             get { return this.pagWebEntidad; }
@@ -94,7 +106,15 @@ namespace appTurismoIqq.VistaModelo
             this.apiServicios = new ApiServicio();
             this.ImageSource = entidad.fotoApp;
             this.NombreEntidad = entidad.nombre;
-            this.DescripcionEntidad = entidad.descripcion;
+            string lenguaje = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            if(lenguaje == "es")
+            {
+                this.DescripcionEntidad = entidad.descripcion;
+            }
+            if(lenguaje == "en")
+            {
+                this.DescripcionEntidadEng = entidad.descripcionEng;
+            }            
             this.PagWebEntidad = entidad.pagWeb;
             this.LoadDirecciones();
             this.EditarVistasEntidad();
@@ -103,9 +123,10 @@ namespace appTurismoIqq.VistaModelo
 
         public async void RefreshList()
         {
-
+            
             var mylistaNVM = this.MiDireccion.Select(p => new DetalleEntidadItemVModelo
             {
+
                 id = p.id,
                 direccion = p.direccion,
                 latitud = p.latitud,

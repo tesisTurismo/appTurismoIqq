@@ -12,6 +12,7 @@
             <Label FontAttributes="Bold" Text="{Binding NombreEntidad}" FontSize="Large" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"></Label>
             <Image Source="{Binding ImageSource}" WidthRequest="100" ></Image>
             <Label Text="{Binding DescripcionEntidad}" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ></Label>
+            <Label Text="{Binding DescripcionEntidadEng}" FontSize="Medium" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ></Label>
             <Label Text="{i18n:Translate PaginaWeb}" FontSize="Medium" VerticalOptions="FillAndExpand" FontAttributes="Bold"></Label>
             <Label Text="{Binding PagWebEntidad}" FontSize="Medium" VerticalOptions="FillAndExpand" ></Label>
 

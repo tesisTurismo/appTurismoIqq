@@ -12,6 +12,7 @@
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidErrorOnCustomJavaObject>false</AndroidErrorOnCustomJavaObject>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
@@ -57,6 +58,9 @@
     </PackageReference>
     <PackageReference Include="Plugin.Multilingual">
       <Version>1.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="TK.CustomMap">
+      <Version>2.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Geolocator">
       <Version>4.5.0.6</Version>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Xaml;
@@ -11,6 +12,7 @@ using Xamarin.Essentials;
 using Map = Xamarin.Forms.Maps.Map;
 using Map2 = Xamarin.Essentials.Map;
 using Plugin.Geolocator;
+using System.Threading;
 
 /*
   En esta clase se instancia el mapa de google para su utilización, además de manejar la geolocalización para mostrar ubicaciones
@@ -28,19 +30,32 @@ namespace appTurismoIqq.Geolocalizacion
     public partial class MapAppPage2 : ContentPage
 
     {
-        
+        public string boton;
 
         public MapAppPage2(double lat, double lon, string calle)
         {
             InitializeComponent();
-          
+
+            
+          string  lenguaje = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+
+
+            if (lenguaje == "en")
+            {
+                boton = "Trace the route";
+            }
+            if (lenguaje == "es")
+            {
+                boton = "Trazar la ruta";
+            }
+
             /* Botón que se utilizará para trazar la dirección desde el punto de origen hasta 
-             la localización deseada, es posible que este botón sea desechado también en pos de instanciar el mapa con la ruta trazada
-             
+             la localización deseada, es posible que este botón sea desechado también en pos de instanciar el mapa con la ruta trazada           
             */
             Button button2 = new Button()
             {
-                Text = "Trazar la ruta",
+                
+                Text = boton,
                 TextColor = Color.White,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.Center,
@@ -64,8 +79,7 @@ namespace appTurismoIqq.Geolocalizacion
             
             map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(-20.247508, -70.133661), Distance.FromMiles(1)).WithZoom(100));
 
-            // Para mover el mapa de su posición por default 
-
+            
 
             //Declaración de una variable tipo pin
             var pin3 = new Pin()
@@ -109,7 +123,8 @@ namespace appTurismoIqq.Geolocalizacion
             };
 
     */
-
+             
+                          
             button2.Clicked += async (object sender, EventArgs e) =>
             {
 

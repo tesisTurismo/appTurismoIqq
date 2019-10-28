@@ -89,7 +89,7 @@ namespace appTurismo.Web.Controllers
                 pagWeb = vistaEntidad.pagWeb,
                 descripcion = vistaEntidad.descripcion,
                 descripcionEng = vistaEntidad.descripcionEng,
-                telefono = vistaEntidad.telefono,
+                //telefono = vistaEntidad.telefono,
                 //direccion = vistaEntidad.direccion,
                 //latitud = vistaEntidad.latitud,
                 //longitud = vistaEntidad.longitud,
